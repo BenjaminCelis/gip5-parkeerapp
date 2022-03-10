@@ -12,8 +12,10 @@ public class MemberDTO implements Serializable {
     private String email;
 
 
+    public MemberDTO(){
 
-    private MemberDTO(Builder builder){
+    }
+    public MemberDTO(Builder builder){
         setId(builder.id);
         setFirstname(builder.firstname);
         setLastname(builder.lastname);
