@@ -28,7 +28,7 @@ public class CreateMemberDTO {
 
     @Override
     public String toString() {
-        return "CreateMemberDTO{" +
+        return "CreateSpelerDTO{" +
                 "id=" + id +
                 ", memberDTO=" + memberDTO +
                 ", password='" + password +
