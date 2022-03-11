@@ -1,11 +1,10 @@
 import  { Link } from 'react-router-dom';
-import styles from './MainNavigation.module.css'
 import { NavLink } from "react-router-dom"
 
 function MainNavigation() {
-    return <header className={styles.header}>
+    return <header>
+        <h1>Rent-a-Spot </h1>
         <nav>
-            <h1>TestNav</h1>
         </nav>
     </header>
 
