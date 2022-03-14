@@ -7,18 +7,29 @@ header {
     background-color: #153965;
 }
 footer {
-    background-color: #153965;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;
+    background:#153965;
 }
 main {
     background-color: #ffffff;
 }
 .card {
     background-color: #153965;
+    margin: 0 auto;
+
+    margin-bottom: 10px;
+    display:inline-block;
+    margin-top: 10px;
+
 }
 
 h1 {
     color: #d8a31a;
     font-size: xx-large;
+    padding-right: 250px;
 }
 
 h2 {
@@ -35,4 +46,50 @@ p {
 a {
     color: #d8a31a;
     text-decoration: underline;
+}
+
+.navbar {
+    min-height: 150px;
+    background-color: #153965;
+
+}
+
+img {
+    mix-blend-mode:multiply ;
+    margin-right: 50px;
+}
+
+
+
+.button {
+    margin-top: 10px;
+    background-color: #d8a31a;
+}
+
+
+
+.registrationcard  {
+    background-color: #153965 !important;
+    width: 50%;
+    float: left;
+    padding: 25px;
+    margin-left: -75px;
+}
+
+.infocard {
+    background-color: #153965 !important;
+
+}
+
+.logincard {
+    background-color: #153965 !important;
+
+}
+
+.leftpanel {
+    width: 50%;
+    float: left;
+    padding: 2px;
+    margin-left: 70px;
+
 }
