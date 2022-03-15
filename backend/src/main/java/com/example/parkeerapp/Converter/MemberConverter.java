@@ -44,7 +44,9 @@ public class MemberConverter {
     public Member createMemberDTOToMember(CreateMemberDTO createMemberDTO){
         Member member = new Member();
         member.setId(createMemberDTO.getId());
-        member.setFirstname(createMemberDTO.getFirstname());
+        member.setRole(member.getRole());
+        member.setFirstname(member.getFirstname());
+        member.setLastname(member.getLastname());
         member.setPassword(createMemberDTO.getPassword());
         return member;
     }
@@ -58,12 +60,6 @@ public class MemberConverter {
 
     public Set<MemberDTO> memberSetToDTO(Set<Member> members){
         return members.stream().map(this::memberToDTO).collect(Collectors.toSet());
-    }
-
-    public MemberSimpleDTO memberToSimpleDTO (Member member){
-        MemberSimpleDTO memberSimpleDTO = new MemberSimpleDTO();
-        memberSimpleDTO.setId(member.getId());
-        return memberSimpleDTO;
     }
 
 }
