@@ -12,9 +12,14 @@ const LoginPage = () =>  {
                 <div className="leftpanel">
                 <Card border="primary" className="infocard rounded-3 " style={{ width: '25rem' }}>
                     <Card.Body>
-                        <Card.Title><h2>welcome to rent a spot</h2></Card.Title>
+                        <Card.Title><h2>Welcome to Rent-A-Spot</h2></Card.Title>
                         <Card.Text>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at cum cumque est magnam molestiae odio officia omnis quam quas quasi, similique veritatis? Aperiam architecto enim placeat quibusdam quo? Enim!</p>
+                            <p>
+                                Hello and welcome to Rent-A-Spot.
+                                This web application is made for everyone who wants to reserve a parking spot at our parking in advance.
+                                <br/> <br/>
+                                After creating an account, you are able to rent a parking spot at a specific time for a certain time.
+                            </p>
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -26,13 +31,13 @@ const LoginPage = () =>  {
                             <Form>
                                 <br/>
                                 <Form.Group controlId="formBasicEmail">
-                                    <Form.Label><h5>Email address:</h5></Form.Label>
+                                    <Form.Label><h5>Email:</h5></Form.Label>
                                     <Form.Control type="email" placeholder="Enter email" />
                                 </Form.Group>
                                 <br/>
                                 <Form.Group controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" />
+                                    <Form.Label><h5>Password:</h5></Form.Label>
+                                    <Form.Control type="password" placeholder="Enter password" />
                                 </Form.Group>
                                 <br/>
                                 <Button variant="success btn-warning" type="submit">
@@ -50,23 +55,23 @@ const LoginPage = () =>  {
                             <Form>
                                 <br/>
                                 <Form.Group controlId="formBasicFirstName">
-                                    <Form.Label>First Name:</Form.Label>
-                                    <Form.Control type="email" placeholder="Enter email" />
+                                    <Form.Label><h5>First name:</h5></Form.Label>
+                                    <Form.Control type="email" placeholder="Enter first name" />
                                 </Form.Group>
                                 <br/>
                                 <Form.Group controlId="formBasicLastName">
-                                    <Form.Label>Last Name:</Form.Label>
-                                    <Form.Control type="email" placeholder="Enter email" />
+                                    <Form.Label><h5>Last name:</h5></Form.Label>
+                                    <Form.Control type="email" placeholder="Enter last name" />
                                 </Form.Group>
                                 <br/>
                                 <Form.Group controlId="formBasicEmail">
-                                    <Form.Label>Email address</Form.Label>
+                                    <Form.Label><h5>Email:</h5></Form.Label>
                                     <Form.Control type="email" placeholder="Enter email" />
                                 </Form.Group>
                                 <br/>
                                 <Form.Group controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" placeholder="Password" />
+                                    <Form.Label><h5>Password:</h5></Form.Label>
+                                    <Form.Control type="password" placeholder="Enter password" />
                                 </Form.Group>
                                 <br/>
                                 <Button variant="success btn-warning" type="submit">

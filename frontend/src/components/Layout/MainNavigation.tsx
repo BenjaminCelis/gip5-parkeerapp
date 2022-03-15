@@ -11,7 +11,7 @@ function MainNavigation() {
                     src={require('../../images/carparkingimg.png')}
                     width="150"
                     height="150"
-                    className="d-inline-block align-top"
+                    className ="navimg"
                     alt="React Bootstrap logo"
                 />
                 <Navbar.Brand href="#home"><h1>Rent-A-Spot</h1></Navbar.Brand>

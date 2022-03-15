@@ -54,9 +54,10 @@ a {
 
 }
 
-img {
+.navimg {
     mix-blend-mode:multiply ;
     margin-right: 50px;
+    margin-left: 190px;
 }
 
 
