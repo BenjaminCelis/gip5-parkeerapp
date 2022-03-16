@@ -13,7 +13,9 @@ function App() {
     return(
     <Router>
         <MainNavigation/>
-        <LoginPage/>
+        <body>
+            <LoginPage/>
+        </body>
         <MainFooter/>
     </Router>
   );
