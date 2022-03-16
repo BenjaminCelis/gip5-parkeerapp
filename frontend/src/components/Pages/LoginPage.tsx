@@ -5,10 +5,8 @@ import {Card, Table, Container, Button, Form, Row, Col} from "react-bootstrap";
 
 const LoginPage = () =>  {
     return (
-
         <Container>
             <div className="main">
-
                 <div className="leftpanel">
                 <Card border="primary" className="infocard rounded-3 " style={{ width: '25rem' }}>
                     <Card.Body>
