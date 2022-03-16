@@ -5,6 +5,8 @@ import MainNavigation from "./components/Layout/MainNavigation";
 import MainFooter from "./components/Layout/MainFooter";
 import LoginPage from "./components/Pages/LoginPage";
 import CreateReservation from "./components/Pages/CreateReservation";
+import ReservationList from "./components/Pages/ReservationList";
+import ReservationDetails from "./components/Pages/ReservationDetails";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {Navbar, Nav, Container, Card} from "react-bootstrap";
@@ -12,13 +14,19 @@ import {Navbar, Nav, Container, Card} from "react-bootstrap";
 
 function App() {
     return(
-    <Router>
+        <Router>
         <MainNavigation/>
-        <body>
-            <CreateReservation/>
-        </body>
+            <body>
+                <Routes>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/reservation/create/*" element={<CreateReservation />} />
+                    <Route path="/reservation/*" element={<ReservationList />} />
+                    <Route path="/reservation/details/*" element={<ReservationDetails />} />
+                    <Route path="/redirect" element={<Navigate to="/reservation" />} />
+                </Routes>
+            </body>
         <MainFooter/>
-    </Router>
+        </Router>
   );
 
 }

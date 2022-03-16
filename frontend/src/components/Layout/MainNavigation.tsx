@@ -14,11 +14,10 @@ function MainNavigation() {
                     className ="navimg"
                     alt="React Bootstrap logo"
                 />
-                <Navbar.Brand href="#home"><h1>Rent-A-Spot</h1></Navbar.Brand>
+                <Link to="/"><h1>Rent-A-Spot</h1></Link>
                 <Nav className="me-auto">
 
                 </Nav>
-
             </Container>
         </Navbar>
     </>
