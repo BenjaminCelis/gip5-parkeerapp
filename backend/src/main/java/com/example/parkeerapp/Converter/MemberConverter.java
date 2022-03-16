@@ -34,9 +34,9 @@ public class MemberConverter {
     public Member memberDTOtoMember(MemberDTO memberDTO){
         Member member = new Member();
         member.setEmail(memberDTO.getEmail());
-        member.setFirstname(member.getFirstname());
-        member.setLastname(member.getLastname());
-        member.setRole(member.getRole());
+        member.setFirstname(memberDTO.getFirstname());
+        member.setLastname(memberDTO.getLastname());
+        member.setRole(memberDTO.getRole());
         return member;
     }
 

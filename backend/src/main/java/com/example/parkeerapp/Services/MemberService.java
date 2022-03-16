@@ -6,6 +6,7 @@ import com.example.parkeerapp.DTO.MemberDTO;
 import com.example.parkeerapp.Domain.Member;
 import com.example.parkeerapp.dao.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public class MemberService {
 
     private final MemberConverter memberConverter;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+
     public MemberService(MemberRepository memberRepository,MemberConverter memberConverter){
         this.memberRepository = memberRepository;
         this.memberConverter = memberConverter;
@@ -25,7 +30,9 @@ public class MemberService {
 
     public MemberDTO createMember(CreateMemberDTO createMemberDTO){
         Member member = memberConverter.createMemberDTOToMember(createMemberDTO);
-        member.getFirstname();
+        member.setRole("Member");
+
+
 
 
 
