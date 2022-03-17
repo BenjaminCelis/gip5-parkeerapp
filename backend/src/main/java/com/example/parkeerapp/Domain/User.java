@@ -31,7 +31,7 @@ public class User {
 
     @Column(name="EMAIL", unique = true)
     private String email;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Car> cars;
 
@@ -59,6 +59,7 @@ public class User {
     public Set<Car> getCars() {
         return cars;
     }
+    @JsonIgnore
     public Set<Reservation> getReservations(){
         Set<Reservation> reservations = new HashSet<>();
         for (Car car : this.getCars()){
