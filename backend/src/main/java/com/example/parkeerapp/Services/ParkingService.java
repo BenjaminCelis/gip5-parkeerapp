@@ -1,7 +1,9 @@
 package com.example.parkeerapp.Services;
 
 import com.example.parkeerapp.Domain.Car;
+import com.example.parkeerapp.Domain.Member;
 import com.example.parkeerapp.Domain.Parkingspot;
+import com.example.parkeerapp.Domain.Reservation;
 import com.example.parkeerapp.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,11 @@ public class ParkingService {
         this.reservationRepository = reservationRepository;
     }
 
+    //MEMBER
+    public boolean memberExists(Long memberId){
+        return memberRepository.existsById(memberId);
+    }
+
     //CARS
     public Car makeCar(Car car){
         return carRepository.save(car);
@@ -36,7 +43,7 @@ public class ParkingService {
         return carRepository.existsById(carId);
     }
 
-
+    //PARKINGSPOTS
     public List<Parkingspot> getParkingspots() {
         return parkingspotRepository.findAll();
     }
@@ -47,9 +54,38 @@ public class ParkingService {
         }
         return freeSpots;
     }
-
+    //TODO
     public List<Parkingspot> getFreeParkingspots(Date d){
-        List<Parkingspot> spots = new ArrayList<>();
-        return spots;
+        List<Parkingspot> takenSpots = new ArrayList<>();
+
+        return takenSpots;
+    }
+
+    //RESERVATIONS
+
+
+
+    public List<Reservation> getReservations(){
+        return reservationRepository.findAll();
+    }
+
+    public boolean reservationExists(Long reservationId){
+        return reservationRepository.existsById(reservationId);
+    }
+    public Reservation getReservation(Long reservationId){
+        return reservationRepository.findById(reservationId).orElseThrow();
+    }
+
+
+    public List<Reservation> getMemberReservations(Long memberId){
+        if(!memberExists(memberId)){
+            throw new IllegalArgumentException();
+        }
+        List<Reservation> reservations = new ArrayList<>();
+        Member member = memberRepository.findById(memberId).get();
+        for(Car car: member.getCars()){
+            reservations.addAll(car.getReservations());
+        }
+        return reservations;
     }
 }
