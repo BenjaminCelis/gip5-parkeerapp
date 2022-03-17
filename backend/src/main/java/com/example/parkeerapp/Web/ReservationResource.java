@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reservation")
+@CrossOrigin("http://localhost:3000/")
 public class ReservationResource {
     private final ParkingService service;
 
@@ -20,13 +21,15 @@ public class ReservationResource {
     public ReservationResource(ParkingService service) {
         this.service = service;
     }
-    @CrossOrigin(origins = "*")
+
     @GetMapping
+
     public ResponseEntity<List<Reservation>> getReservations(){
         return ResponseEntity.ok(service.getReservations());
     }
-    @CrossOrigin(origins = "*")
+
     @GetMapping("/{reservationId}")
+
     public ResponseEntity<Reservation> getReservation(@PathVariable("reservationId") Long reservationId){
     if(reservationId<1)
             return ResponseEntity.badRequest().build();
@@ -35,8 +38,8 @@ public class ReservationResource {
         Reservation reservation =  service.getReservation(reservationId);
         return ResponseEntity.ok(reservation);
     }
-    @CrossOrigin(origins = "*")
     @GetMapping("/member/{memberId}")
+
     public ResponseEntity<List<Reservation>> getMemberReservations(@PathVariable("memberId") Long memberId){
         if(service.memberExists(memberId)){
             return ResponseEntity.ok(service.getMemberReservations(memberId));

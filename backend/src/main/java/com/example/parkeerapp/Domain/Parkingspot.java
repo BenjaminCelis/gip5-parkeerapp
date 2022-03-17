@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -68,17 +69,17 @@ public class Parkingspot {
 
     //TODO
     public boolean isTaken(){
-        LocalDate d;
+        LocalDateTime d = LocalDateTime.now();
         for (Reservation reservation: this.reservations) {
-            if(1 > 2){
+            if(d.isAfter(reservation.getStartTime()) && d.isBefore(reservation.getEndTime())){
                 return true;
             }
         }
         return false;
     }
-    public boolean isTaken(Date d){
+    public boolean isTaken(LocalDateTime d){
         for (Reservation reservation: this.reservations) {
-            if(1 > 2){
+            if(d.isAfter(reservation.getStartTime()) && d.isBefore(reservation.getEndTime())){
                 return true;
             }
         }
@@ -103,12 +104,12 @@ public class Parkingspot {
         return reservations;
     }
 
-    public Reservation getReservation(Date d){
+    public Reservation getReservation(LocalDateTime d){
         if(!isTaken(d)){
             throw new NoResultException();
         }
         for(Reservation reservation: this.getReservations()){
-            if(1 > 2){
+            if(d.isAfter(reservation.getStartTime()) && d.isBefore(reservation.getEndTime())){
                 return reservation;
             }
 

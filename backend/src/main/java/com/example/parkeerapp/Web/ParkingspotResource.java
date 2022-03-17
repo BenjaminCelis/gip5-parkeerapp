@@ -26,7 +26,6 @@ public class ParkingspotResource {
 
     //@ApiOperation("Haalt alle parkeerplaatsen op")
     @GetMapping
-    @CrossOrigin(origins = "*")
     public ResponseEntity<List<Parkingspot>> getParkingspots(){
         return ResponseEntity.ok(service.getParkingspots( ));
     }
