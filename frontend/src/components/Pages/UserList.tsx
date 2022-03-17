@@ -12,7 +12,7 @@ const UserList = (props:any) =>  {
     const [fetched, setFetched] = useState(false);
 
     const fetchUsers = () => {
-        fetch("http://localhost:8080/members")
+        fetch("http://localhost:8080/user")
             .then(res => res.json())
             .then(users => setUsers(users))
             .catch(e => setError(e))
@@ -46,6 +46,11 @@ const UserList = (props:any) =>  {
                             <td>{user.userDTO.username}</td>
                             <td>{user.userDTO.firstname} {user.userDTO.lastname} </td>
                             <td>{user.userDTO.email}</td>
+                            <td>
+                                <Link to={`/user/details/${user.id}`}>
+                                    <Button className="btn btn-primary">Details</Button>
+                                </Link>
+                            </td>
                         </tr>
                     ))}
                     </tbody>
