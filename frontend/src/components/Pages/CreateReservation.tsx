@@ -4,27 +4,27 @@ import {Card, Table, Container, Button, Form, Row, Col, Dropdown, ListGroup} fro
 
 const CreateReservation = (props:any) =>  {
                            const location = useLocation();
-                           const [reservations, setReservation] = useState([{
-                               id: props.reservation ? props.reservation.id : '',
-                               car: props.reservation ? props.reservation.car : '',
-                               startTime: props.reservation ? props.reservation.startTime : '',
-                               endTime: props.reservation ? props.reservation.endTime : '',
-                               reservationDate: props.reservation ? props.reservation.reservationDate : '',
-                               parkingspot: props.reservation ? props.reservation.parkingspot : ''
+                           const [parkingspots, setParkingspots] = useState([{
+                               id: props.parkingspot ? props.parkingspot.id : '',
+                               floor: props.parkingspot ? props.parkingspot.floor : '',
+                               spot: props.parkingspot ? props.parkingspot.spot : '',
+                               spotCode: props.parkingspot ? props.parkingspot.spotCode : '',
+                               taken: props.parkingspot ? props.parkingspot.taken : '',
+
                            },])
                            const [error, setError] = useState(null)
                            const [fetched, setFetched] = useState(false);
 
-                           const fetchReservations = () => {
-                               fetch("http://localhost:8080/reservation")
+                           const fetchParkingspots = () => {
+                               fetch("http://localhost:8080/parkingspot")
                                    .then(res => res.json())
-                                   .then(reservations => setReservation(reservations))
+                                   .then(parkingspots => setParkingspots(parkingspots))
                                    .catch(e => setError(e))
                                    .finally(() => setFetched(true))
                            };
 
                            useEffect(() => {
-                               fetchReservations()
+                               fetchParkingspots()
                            }, [location])
 
                            if(!fetched){
@@ -103,11 +103,11 @@ const CreateReservation = (props:any) =>  {
                                 <br/>
                                 <select>
                                     <option>Select your parking spot:</option>
-                                    <option>1.01</option>
-                                    <option>1.02</option>
-                                    <option>1.03</option>
-                                    <option>2.01</option>
-                                    <option>2.02</option>
+                                    {parkingspots
+                                    .filter(parkingspot => parkingspot.taken == false)
+                                    .map(parkingspot => (
+                                    <option key={parkingspot.id}>{parkingspot.spotCode}</option>
+                                    ))}
                                 </select>
 
                                 <br/>

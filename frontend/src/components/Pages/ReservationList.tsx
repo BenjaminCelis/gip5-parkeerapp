@@ -58,6 +58,11 @@ const CreateReservation = (props:any) =>  {
                             <td>{reservation.parkingspot.spotCode}</td>
                             <td>{reservation.startTime}</td>
                             <td>{reservation.endTime}</td>
+                            <td>
+                                <Link to={`/reservation/details/${reservation.id}`}>
+                                    <Button className="btn btn-primary">Details</Button>
+                                </Link>
+                            </td>
                         </tr>
                     ))}
                     </tbody>
