@@ -3,9 +3,14 @@ package com.example.parkeerapp.runner;
 import com.example.parkeerapp.Domain.*;
 import com.example.parkeerapp.dao.*;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.Date;
 
 @Transactional
@@ -60,23 +65,7 @@ public class LineRunner implements CommandLineRunner {
         r.setCar(tyt);
         Long R = Long.parseLong("3");
         r.setParkingspot(parkingspotRepository.getById(R));
-        Date d = new Date();
-        d.setYear(122);
-        d.setMonth(3);
-        d.setDate(16);
-        d.setHours(3);
-        d.setMinutes(30);
-        d.setSeconds(0);
-        r.setStartTime(d);
-        Date b = new Date();
-        b.setYear(122);
-        b.setMonth(3);
-        b.setDate(20);
-        b.setHours(3);
-        b.setMinutes(30);
-        b.setSeconds(0);
-        r.setEndTime(b);
-        r.setReservationDate(new Date());
+        new Jsr310JpaConverters.LocalDateTimeConverter();
         reservationRepository.save(r);
 
     }

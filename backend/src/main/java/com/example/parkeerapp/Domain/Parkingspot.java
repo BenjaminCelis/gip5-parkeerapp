@@ -3,6 +3,7 @@ package com.example.parkeerapp.Domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -65,10 +66,11 @@ public class Parkingspot {
         return floor + "." + spot;
     }
 
+    //TODO
     public boolean isTaken(){
-        Date d = new Date();
+        LocalDate d;
         for (Reservation reservation: this.reservations) {
-            if(d.after(reservation.getStartTime())&&d.before(reservation.getEndTime())){
+            if(1 > 2){
                 return true;
             }
         }
@@ -76,7 +78,7 @@ public class Parkingspot {
     }
     public boolean isTaken(Date d){
         for (Reservation reservation: this.reservations) {
-            if(d.after(reservation.getStartTime())&&d.before(reservation.getEndTime())){
+            if(1 > 2){
                 return true;
             }
         }
@@ -94,7 +96,7 @@ public class Parkingspot {
     public Set<Reservation> getReservations(Date sd, Date ed){
         Set<Reservation> reservations = new HashSet<>();
         for (Reservation reservation: this.reservations){
-            if(sd.before(reservation.getEndTime())&&ed.after(reservation.getStartTime())){
+            if(1 > 2){
                 reservations.add(reservation);
             }
         }
@@ -106,7 +108,7 @@ public class Parkingspot {
             throw new NoResultException();
         }
         for(Reservation reservation: this.getReservations()){
-            if(d.after(reservation.getStartTime())&&d.before(reservation.getEndTime())){
+            if(1 > 2){
                 return reservation;
             }
 
