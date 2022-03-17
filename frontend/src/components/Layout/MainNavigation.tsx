@@ -1,5 +1,4 @@
 import  { Link } from 'react-router-dom';
-import { NavLink } from "react-router-dom"
 import {Container, Nav, Navbar} from "react-bootstrap";
 import React from "react";
 
@@ -20,10 +19,10 @@ function MainNavigation() {
                         <Link to="/"><h1>Rent-A-Spot</h1></Link>
                     </li>
                     <li>
-                        <Link to="/reservation"><h2>Reservations</h2></Link>
+                        <Link to="/reservation"><h3>Reservations</h3></Link>
                     </li>
                     <li>
-                        <Link to="/reservation/create"><h2>New reservation</h2></Link>
+                        <Link to="/reservation/create"><h3>New reservation</h3></Link>
                     </li>
                 </ul>
             </nav>

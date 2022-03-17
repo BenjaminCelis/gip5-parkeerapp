@@ -33,11 +33,11 @@ body{
     align-items: flex-end;
 }
 
-.header li a h1,.header li a h2{
+.header li a h1,.header li a h3{
     margin-left: 10px;
 }
 
-.header a h2, .header a h1, .header a{
+.header a h3, .header a h1, .header a{
     text-decoration: none;
     align-items: center;
 }
@@ -64,21 +64,17 @@ footer{
 
 h1 {
     color: #d8a31a;
-    font-size: xx-large;
-}
-
-.navlink {
-    color: #d8a31a;
-    font-size: large;
+    font-size: 2rem;
+    padding-right: 50px;
 }
 
 h2 {
     color: #d8a31a;
-    font-size: x-large;
+    font-size: 1.5rem;
 }
-h3 {
-    color: #153965;
-    font-size: large;
+h3, .header a h3 {
+    color: #f1f1e6;
+    font-size: medium;
 }
 p {
     color: #f1f1e6;
@@ -166,13 +162,6 @@ tr {
     background-color: #153965 !important;
     color: #d8a31a;
 }
-
-h3 {
-    color: white;
-}
-
-
-
 .yourregistrationscard  {
     color: white;
     width: 50%;
