@@ -6,6 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 @Transactional
 @Component
 public class LineRunner implements CommandLineRunner {
@@ -46,12 +48,36 @@ public class LineRunner implements CommandLineRunner {
         carRepository.save(tyt);
 
 
+
+
         for (int i = 0; i < 4; i++) {
             for (int j = 1; j <= 20; j++) {
                 Parkingspot p = new Parkingspot(i,j);
                 parkingspotRepository.save(p);
             }
         }
+        Reservation r = new Reservation();
+        r.setCar(tyt);
+        Long R = Long.parseLong("3");
+        r.setParkingspot(parkingspotRepository.getById(R));
+        Date d = new Date();
+        d.setYear(122);
+        d.setMonth(3);
+        d.setDate(16);
+        d.setHours(3);
+        d.setMinutes(30);
+        d.setSeconds(0);
+        r.setStartTime(d);
+        Date b = new Date();
+        b.setYear(122);
+        b.setMonth(3);
+        b.setDate(20);
+        b.setHours(3);
+        b.setMinutes(30);
+        b.setSeconds(0);
+        r.setEndTime(b);
+        r.setReservationDate(new Date());
+        reservationRepository.save(r);
 
     }
 }
