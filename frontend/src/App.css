@@ -99,16 +99,12 @@ a {
     float: left;
     padding: 25px;
     margin-left: -75px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 
 
-.logincard {
-    background-color: #153965 !important;
-    padding: 2px;
 
-}
 
 .leftpanel {
     width: 50%;
@@ -174,4 +170,10 @@ tr {
 
 .infocard {
     background-color: #153965;
+    margin: 15px;
+}
+
+.card-welcome-message {
+    margin-left: 120px;
+
 }

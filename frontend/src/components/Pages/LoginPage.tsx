@@ -8,7 +8,7 @@ const LoginPage = () =>  {
         <Container>
             <div className="main">
                 <div className="leftpanel">
-                <Card border="primary" className="infocard rounded-3 " style={{ width: '25rem' }}>
+                <Card border="primary" className="infocard rounded-3 card-welcome-message" style={{ width: '25rem' }}>
                     <Card.Body>
                         <Card.Title><h2>Welcome to Rent-A-Spot</h2></Card.Title>
                         <Card.Text>
@@ -22,7 +22,7 @@ const LoginPage = () =>  {
                     </Card.Body>
                 </Card>
 
-                <Card border="primary" className="logincard" style={{ width: '25rem' }}>
+                <Card border="primary" className="" style={{ width: '25rem' }}>
                     <Card.Body>
                         <Card.Title><h2>Login</h2></Card.Title>
                         <Card.Text>
