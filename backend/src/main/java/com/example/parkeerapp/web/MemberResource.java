@@ -26,7 +26,6 @@ public class MemberResource {
         return memberService.createMember(createMemberDTO);
     }
 
-    @PreAuthorize("hasRole('Admin')")
     @GetMapping
     public List<MemberDTO> getAllMembers(){return memberService.getAllMembers();}
 

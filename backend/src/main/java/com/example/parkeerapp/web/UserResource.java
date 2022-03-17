@@ -15,5 +15,7 @@ public class UserResource {
 
     public UserResource(ParkingService service) {
         this.service = service;
+
+
     }
 }
