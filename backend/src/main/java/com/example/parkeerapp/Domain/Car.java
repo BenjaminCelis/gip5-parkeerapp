@@ -1,5 +1,7 @@
 package com.example.parkeerapp.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -23,6 +25,7 @@ public class Car {
     }
 
     @OneToMany(mappedBy = "car")
+    @JsonIgnore
     private Set<Reservation> reservations;
     @Column(name = "licensePlate")
     private String licensePlate;
