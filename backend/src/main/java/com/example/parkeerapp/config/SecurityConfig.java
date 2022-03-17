@@ -7,19 +7,26 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private MemberDetailService MemberDetailService;
+
+    private UserDetailsService userDetailsService;
     private BCryptPasswordEncoder passwordEncoder;
 
-    @Qualifier("MemberMemberDetailService")
+    @Qualifier("UserUserDetailService")
     @Autowired
-    public void setMemberDetailService(MemberMemberDetailService memberMemberDetailService) {
-        this.MemberDetailService = BCryptPasswordEncoder;
+    public void setMemberDetailsService(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
+    @Autowired
+    public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.passwordEncoder = bCryptPasswordEncoder;
     }
 
     //basic http security & alleen authenticated requests worden authorized, moet nog aangepast worden.
@@ -42,11 +49,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.memberDetailService(memberDetailService);
+        auth.userDetailsService(userDetailsService);
 
         auth.inMemoryAuthentication()
-                .withUser("speler").password(passwordEncoder.encode("speler")).roles("SPELER")
+                .withUser("member").password(passwordEncoder.encode("member")).roles("MEMBER")
                 .and()
-                .withUser("admin").password(passwordEncoder.encode("admin")).roles("SPELER","ADMIN");
+                .withUser("admin").password(passwordEncoder.encode("admin")).roles("MEMBER","ADMIN");
     }
+
 }

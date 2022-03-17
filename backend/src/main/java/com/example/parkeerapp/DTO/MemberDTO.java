@@ -6,10 +6,7 @@ import java.io.Serializable;
 public class MemberDTO implements Serializable {
 
     private long id;
-    private String firstname;
-    private String lastname;
-    private String role;
-    private String email;
+    private UserDTO userDTO;
 
 
     public MemberDTO(){
@@ -17,50 +14,36 @@ public class MemberDTO implements Serializable {
     }
     public MemberDTO(Builder builder){
         setId(builder.id);
-        setFirstname(builder.firstname);
-        setLastname(builder.lastname);
-        setEmail(builder.email);
-        setRole(builder.role);
+        setUserDTO(builder.userDTO);
     }
 
-    public long getId() {return id;}
+    public long getId() {
+        return id;
+    }
 
-    public void setId(long id) {this.id = id;}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public String getFirstname() {return firstname;}
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
 
-    public void setFirstname(String firstname) {this.firstname = firstname;}
-
-    public String getEmail() {return email;}
-
-    public void setEmail(String email) {this.email = email;}
-
-    public String getLastname() {return lastname;}
-
-    public void setLastname(String lastname) {this.lastname = lastname;}
-
-    public String getRole() {return role;}
-
-    public void setRole(String role) {this.role = role;}
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
 
     @Override
     public String toString() {
-        return "Member{" +
+        return "SpelerDTO{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", role='" + role + '\'' +
-                ", email='" + email + '\'' +
+                ", userDTO=" + userDTO +
                 '}';
     }
 
-    public static final class Builder{
-
+    public static final class Builder {
         private long id;
-        private String firstname;
-        private String lastname;
-        private String role;
-        private String email;
+        private UserDTO userDTO;
 
         public Builder(){
 
@@ -68,10 +51,7 @@ public class MemberDTO implements Serializable {
 
         public Builder(MemberDTO copy){
             this.id = copy.getId();
-            this.firstname = copy.getFirstname();
-            this.lastname = copy.getLastname();
-            this.role = copy.getRole();
-            this.email = copy.getEmail();
+            this.userDTO = copy.getUserDTO();
         }
 
         public Builder id(Long val){
@@ -79,24 +59,8 @@ public class MemberDTO implements Serializable {
             return this;
         }
 
-        public Builder firstname(String val){
-            firstname = val;
-            return this;
-        }
-
-        public Builder lastname(String val){
-            lastname = val;
-            return this;
-        }
-
-
-        public Builder role(String val){
-            role = val;
-            return this;
-        }
-
-        public Builder email(String val){
-            email = val;
+        public Builder user(UserDTO val){
+            userDTO = val;
             return this;
         }
 

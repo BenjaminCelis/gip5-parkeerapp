@@ -4,6 +4,7 @@ package com.example.parkeerapp.Services;
 import com.example.parkeerapp.Converter.AdminConverter;
 import com.example.parkeerapp.DTO.AdminDTO;
 import com.example.parkeerapp.Domain.Admin;
+import com.example.parkeerapp.Domain.User;
 import com.example.parkeerapp.dao.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,14 +34,19 @@ public class AdminService {
         Admin admin = adminConverter.dtoToAdmin(adminDTO);
 
         //set role
-        admin.getMember().setRole("ADMIN");
+        admin.getUser().setRole("ADMIN");
 
         // password encoden
-        admin.getMember().setPassword(passwordEncoder.encode(admin.getMember().getPassword()));
+        admin.getUser().setPassword(passwordEncoder.encode(admin.getUser().getPassword()));
 
 
-        System.out.println(admin.getMember().toString());
+        System.out.println(admin.getUser().toString());
         adminRepository.save(admin);
+        return adminConverter.adminDTO(admin);
+    }
+
+    public AdminDTO getAdminByUserId(User user){
+        Admin admin = adminRepository.findByUser(user).orElseThrow();
         return adminConverter.adminDTO(admin);
     }
 

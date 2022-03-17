@@ -3,14 +3,14 @@ package com.example.parkeerapp.DTO;
 public class CreateMemberDTO {
 
     private long id;
-    private MemberDTO memberDTO;
+    private UserDTO userDTO;
     private String password;
 
     public CreateMemberDTO(){}
 
     private CreateMemberDTO(Builder builder){
         setId(builder.id);
-        setMemberDTO(builder.memberDTO);
+        setUserDTO(builder.userDTO);
         setPassword(builder.password);
     }
 
@@ -22,22 +22,21 @@ public class CreateMemberDTO {
 
     public void setPassword(String password) {this.password = password;}
 
-    public MemberDTO getMemberDTO() {return memberDTO;}
+    public UserDTO getUserDTO() {return userDTO;}
 
-    public void setMemberDTO(MemberDTO memberDTO) {this.memberDTO = memberDTO;}
-
+    public void setUserDTO(UserDTO userDTO) {this.userDTO = userDTO;}
     @Override
     public String toString() {
         return "CreateSpelerDTO{" +
                 "id=" + id +
-                ", memberDTO=" + memberDTO +
+                ", userDTO=" + userDTO +
                 ", password='" + password +
                 '}';
     }
 
     public static final class Builder {
         private long id;
-        private MemberDTO memberDTO;
+        private UserDTO userDTO;
         private String password;
 
 
@@ -45,15 +44,14 @@ public class CreateMemberDTO {
 
         public Builder(CreateMemberDTO copy){
             this.id = copy.getId();
-            this.memberDTO = copy.getMemberDTO();
+            this.userDTO = copy.getUserDTO();
             this.password = copy.getPassword();
         }
 
-        public Builder member(MemberDTO val){
-            memberDTO = val;
+        public Builder user(UserDTO val){
+            userDTO = val;
             return this;
         }
-
         public Builder id(Long val){
             id = val;
             return this;

@@ -12,8 +12,8 @@ public class Admin {
     private long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Member_ID")
-    private Member member;
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
 
     public  Admin(){
@@ -22,28 +22,36 @@ public class Admin {
 
     public Admin(Builder builder) {
         setId(builder.id);
-        setMember(builder.member);
+        setUser(builder.user);
     }
 
     @Override
     public String toString() {
         return "Admin{" +
                 "id=" + id +
-                ", user=" + member +
+                ", user=" + user +
                 '}';
     }
 
-    public long getId() {return id;}
+    public long getId() {
+        return id;
+    }
 
-    public void setId(long id) {this.id = id;}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public Member getMember() {return member;}
+    public User getUser() {
+        return user;
+    }
 
-    public void setMember(Member member) {this.member = member;}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public static final class Builder{
         private long id;
-        private Member member;
+        private User user;
 
         public Builder(){
 
@@ -51,7 +59,7 @@ public class Admin {
 
         public Builder(Admin copy){
             this.id = copy.getId();
-            this.member = copy.getMember();
+            this.user = copy.getUser();
         }
 
         public Builder id(Long val){
@@ -59,8 +67,8 @@ public class Admin {
             return this;
         }
 
-        public Builder member(Member val){
-            member = val;
+        public Builder user(User val){
+            user = val;
             return this;
         }
 

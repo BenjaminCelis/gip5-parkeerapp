@@ -30,10 +30,10 @@ public class MemberService {
 
     public MemberDTO createMember(CreateMemberDTO createMemberDTO){
         Member member = memberConverter.createMemberDTOToMember(createMemberDTO);
-        member.setRole("Member");
+        member.getUser().setRole("Member");
 
 
-
+        member.getUser().setPassword(passwordEncoder.encode(member.getUser().getPassword()));
 
 
         memberRepository.save(member);

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class AdminDTO implements Serializable {
     private long id;
-    private MemberDTO memberDTO;
+    private UserDTO userDTO;
     private String passwoord;
 
     public long getId() {
@@ -15,9 +15,13 @@ public class AdminDTO implements Serializable {
         this.id = id;
     }
 
-    public MemberDTO getMemberDTO() {return memberDTO;}
+    public UserDTO getUserDTO() {
+        return userDTO;
+    }
 
-    public void setMemberDTO(MemberDTO memberDTO) {this.memberDTO = memberDTO;}
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
 
     public String getPasswoord() {
         return passwoord;
@@ -29,9 +33,9 @@ public class AdminDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "AdminDTO{" +
+        return "ManagerDTO{" +
                 "id=" + id +
-                ", memberDTO=" + memberDTO +
+                ", userDTO=" + userDTO +
                 ", passwoord='" + passwoord + '\'' +
                 '}';
     }
@@ -42,13 +46,13 @@ public class AdminDTO implements Serializable {
 
     public AdminDTO(Builder builder){
         setId(builder.id);
-        setMemberDTO(builder.memberDTO);
+        setUserDTO(builder.userDTO);
         setPasswoord(builder.passwoord);
     }
 
     public static final class Builder {
         private long id;
-        private MemberDTO memberDTO;
+        private UserDTO userDTO;
         private String passwoord;
 
         public Builder(){
@@ -57,7 +61,7 @@ public class AdminDTO implements Serializable {
 
         public Builder(AdminDTO copy){
             this.id = copy.getId();
-            this.memberDTO = copy.getMemberDTO();
+            this.userDTO = copy.getUserDTO();
             this.passwoord = copy.getPasswoord();
         }
 
@@ -66,8 +70,8 @@ public class AdminDTO implements Serializable {
             return this;
         }
 
-        public Builder memberDTO(MemberDTO val){
-            memberDTO = val;
+        public Builder userDTO(UserDTO val){
+            userDTO = val;
             return this;
         }
 
@@ -79,4 +83,3 @@ public class AdminDTO implements Serializable {
         public AdminDTO build(){return new AdminDTO(this);}
     }
 }
-

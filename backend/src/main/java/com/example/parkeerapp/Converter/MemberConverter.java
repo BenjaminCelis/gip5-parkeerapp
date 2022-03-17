@@ -13,15 +13,14 @@ import java.util.stream.Collectors;
 @Component
 public class MemberConverter {
 
+    UserConverter userConverter = new UserConverter();
+
 
     // Member to memberDTO
     public MemberDTO memberToDTO(Member member){
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setId(member.getId());
-        memberDTO.setEmail(member.getEmail());
-        memberDTO.setFirstname(member.getFirstname());
-        memberDTO.setLastname(member.getLastname());
-        memberDTO.setRole(member.getRole());
+        memberDTO.setUserDTO(userConverter.userToDTO(member.getUser()));
         return memberDTO;
     }
 
@@ -33,10 +32,7 @@ public class MemberConverter {
     // memberDTO to member
     public Member memberDTOtoMember(MemberDTO memberDTO){
         Member member = new Member();
-        member.setEmail(memberDTO.getEmail());
-        member.setFirstname(memberDTO.getFirstname());
-        member.setLastname(memberDTO.getLastname());
-        member.setRole(memberDTO.getRole());
+        member.setUser(userConverter.userDTOtoUser(memberDTO.getUserDTO()));
         return member;
     }
 
@@ -44,17 +40,15 @@ public class MemberConverter {
     public Member createMemberDTOToMember(CreateMemberDTO createMemberDTO){
         Member member = new Member();
         member.setId(createMemberDTO.getId());
-        member.setRole(member.getRole());
-        member.setFirstname(member.getFirstname());
-        member.setLastname(member.getLastname());
-        member.setPassword(createMemberDTO.getPassword());
+        member.setUser(userConverter.userDTOtoUser(createMemberDTO.getUserDTO()));
         return member;
     }
     //Member to DTO member
     public CreateMemberDTO MemberToCreateMemberDTO(Member member){
         CreateMemberDTO createMemberDTO = new CreateMemberDTO();
         createMemberDTO.setId(member.getId());
-        createMemberDTO.setPassword(member.getPassword());
+        createMemberDTO.setPassword(member.getUser().getPassword());
+        createMemberDTO.setUserDTO(userConverter.userToDTO(member.getUser()));
         return createMemberDTO;
     }
 

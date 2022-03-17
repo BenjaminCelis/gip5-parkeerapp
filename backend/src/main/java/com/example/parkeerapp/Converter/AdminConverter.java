@@ -10,20 +10,20 @@ import java.util.stream.Collectors;
 @Component
 public class AdminConverter {
 
-    MemberConverter memberConverter = new MemberConverter();
+    UserConverter userConverter = new UserConverter();
 
     public AdminDTO adminDTO(Admin admin){
         AdminDTO adminDTO = new AdminDTO();
         adminDTO.setId(adminDTO.getId());
-        adminDTO.setMemberDTO(memberConverter.memberToDTO(admin.getMember()));
+        adminDTO.setUserDTO(userConverter.userToDTO(admin.getUser()));
         return adminDTO;
     }
 
     public Admin dtoToAdmin(AdminDTO adminDTO){
         Admin admin = new Admin();
         admin.setId(adminDTO.getId());
-        admin.setMember(memberConverter.memberDTOtoMember(adminDTO.getMemberDTO()));
-        admin.getMember().setPassword(adminDTO.getPasswoord());
+        admin.setUser(userConverter.userDTOtoUser(adminDTO.getUserDTO()));
+        admin.getUser().setPassword(adminDTO.getPasswoord());;
         return admin;
     }
 
