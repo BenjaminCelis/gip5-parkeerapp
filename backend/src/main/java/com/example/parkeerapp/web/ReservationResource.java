@@ -3,6 +3,7 @@ package com.example.parkeerapp.web;
 import com.example.parkeerapp.Domain.Parkingspot;
 import com.example.parkeerapp.Domain.Reservation;
 import com.example.parkeerapp.Services.ParkingService;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,5 +46,18 @@ public class ReservationResource {
             return ResponseEntity.ok(service.getMemberReservations(memberId));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PostMapping
+    public ResponseEntity<Reservation> makeReservation(@RequestBody Reservation reservation){
+        if(reservation.getCar() == null || reservation.getParkingspot() == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+        try{
+            return ResponseEntity.status(HttpStatus.CREATED).body(service.makeReservation(reservation));
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }

@@ -64,6 +64,7 @@ public class ParkingService {
     public List<Parkingspot> getParkingspots() {
         return parkingspotRepository.findAll();
     }
+
     public List<Parkingspot> getFreeParkingspots(){
         List<Parkingspot> freeSpots = new ArrayList<>();
         for (Parkingspot p:parkingspotRepository.findAll()) {

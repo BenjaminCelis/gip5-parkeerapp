@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/parkingspot")
+@CrossOrigin("http://localhost:3000/")
 public class ParkingspotResource {
 
     private final ParkingService service;

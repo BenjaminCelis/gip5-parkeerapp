@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
+@CrossOrigin("http://localhost:3000/")
 public class AdminResource {
 
     private final AdminService adminService;
