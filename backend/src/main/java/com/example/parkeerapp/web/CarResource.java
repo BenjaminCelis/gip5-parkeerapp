@@ -3,11 +3,9 @@ package com.example.parkeerapp.web;
 import com.example.parkeerapp.Domain.Car;
 import com.example.parkeerapp.Services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +22,15 @@ public class CarResource {
     }
 
 
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Car>> getMemberCars(@PathVariable("userId") Long userId){
+        if(!service.userExists(userId)){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(service.getUserCars(userId));
+
+    }
     @GetMapping
     public ResponseEntity<List<Car>> getCars(){
         return ResponseEntity.ok(service.getCars());

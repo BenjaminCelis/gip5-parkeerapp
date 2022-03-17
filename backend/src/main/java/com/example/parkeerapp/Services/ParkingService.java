@@ -54,6 +54,15 @@ public class ParkingService {
     }
 
     //CARS
+    public List<Car> getUserCars(Long userId) {
+            User user = getUser(userId);
+            List<Car>cars = new ArrayList<>();
+        for (Car car: user.getCars()) {
+            cars.add(car);
+        }
+        return cars;
+    }
+
     public Car makeCar(Car car){
         return carRepository.save(car);
     }
@@ -116,6 +125,7 @@ public class ParkingService {
         reservation = reservationRepository.save(reservation);
         return reservation;
     }
+
 
 
 }
