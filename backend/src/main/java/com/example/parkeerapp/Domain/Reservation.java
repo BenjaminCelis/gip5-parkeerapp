@@ -1,5 +1,7 @@
 package com.example.parkeerapp.Domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,9 +30,11 @@ public class Reservation {
     private LocalDate reservationDate;
 
     @Column(name = "endTime")
+    @JsonFormat(pattern = "dd-MM-yyy HH:mm")
     private LocalDateTime endTime;
 
     @Column(name = "startTime")
+    @JsonFormat(pattern = "dd-MM-yyy HH:mm")
     private LocalDateTime startTime;
 
     public Car getCar() {

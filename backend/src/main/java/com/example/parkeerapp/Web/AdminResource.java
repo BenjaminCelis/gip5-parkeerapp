@@ -1,4 +1,4 @@
-package com.example.parkeerapp.Web;
+package com.example.parkeerapp.web;
 
 import com.example.parkeerapp.DTO.AdminDTO;
 import com.example.parkeerapp.Services.AdminService;
