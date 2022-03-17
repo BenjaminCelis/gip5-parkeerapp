@@ -123,10 +123,12 @@ a {
 
 .selectcarselector {
     padding-bottom: -10px;
+    height: 155px;
 }
 
 .parkingspotselector {
     padding-bottom: 18px;
+    height: 272px;
 }
 
 .infocardcreate {
