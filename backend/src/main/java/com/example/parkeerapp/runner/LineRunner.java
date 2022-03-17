@@ -3,7 +3,11 @@ package com.example.parkeerapp.runner;
 import com.example.parkeerapp.Domain.*;
 import com.example.parkeerapp.dao.*;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
+@Component
 public class LineRunner implements CommandLineRunner {
 
     private final MemberRepository memberRepository;
@@ -43,7 +47,7 @@ public class LineRunner implements CommandLineRunner {
 
 
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 20; j++) {
+            for (int j = 1; j <= 20; j++) {
                 Parkingspot p = new Parkingspot(i,j);
                 parkingspotRepository.save(p);
             }
