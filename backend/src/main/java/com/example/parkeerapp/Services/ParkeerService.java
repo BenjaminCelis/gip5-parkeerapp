@@ -1,5 +1,6 @@
 package com.example.parkeerapp.Services;
 
+import com.example.parkeerapp.Domain.Car;
 import com.example.parkeerapp.Domain.Parkingspot;
 import com.example.parkeerapp.Domain.Reservation;
 import com.example.parkeerapp.dao.*;
@@ -22,6 +23,14 @@ public class ParkeerService {
         this.carRepository = carRepository;
         this.parkingspotRepository = parkingspotRepository;
         this.reservationRepository = reservationRepository;
+    }
+
+    //CARS
+    public Car makeCar(Car car){
+        return carRepository.save(car);
+    }
+    public boolean carExists(Long carId){
+        return carRepository.existsById(carId);
     }
 
 
