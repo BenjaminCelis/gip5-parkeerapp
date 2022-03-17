@@ -24,7 +24,7 @@ public class CarResource {
 
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<Car>> getMemberCars(@PathVariable("userId") Long userId){
+    public ResponseEntity<List<Car>> getUserCars(@PathVariable("userId") Long userId){
         if(!service.userExists(userId)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
