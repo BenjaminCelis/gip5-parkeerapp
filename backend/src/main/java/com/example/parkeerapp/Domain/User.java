@@ -29,7 +29,7 @@ public class User {
 
     @Column(name="EMAIL", unique = true)
     private String email;
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "user")
     private Set<Car> cars;
 
     public User(){
