@@ -69,7 +69,7 @@ const CreateReservation = (props:any) =>  {
 
     return (
         <Container >
-            <Table className="infocard rounded-3 allreservationstable">
+            <Table className="infocard rounded-3 registration-list-all">
                 <thead>
                 <tr>
                     <th scope="col"><h4>Name</h4></th>
@@ -93,6 +93,7 @@ const CreateReservation = (props:any) =>  {
                     <td> 14:00</td>
                     <td> 16:00</td>
                 </tr>
+
                 </tbody>
             </Table>
         </Container>
