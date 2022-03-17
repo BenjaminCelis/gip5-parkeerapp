@@ -2,7 +2,7 @@ import {Link, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Card, Table, Container, Button, Form, Row, Col} from "react-bootstrap";
 
-const CreateReservation = () =>  {
+const ReservationDetails = () =>  {
     return (
         <Container>
             <div className="main">
@@ -10,7 +10,7 @@ const CreateReservation = () =>  {
                         <Card.Title>
                             <div className="card-header">
                                 <h2>Benjamin Celis</h2>
-                                <h3>Email: BenjaminCelis@telenet.be</h3>
+                                <p>Email: BenjaminCelis@telenet.be</p>
                             </div>
                         </Card.Title>
                 </Card>
@@ -105,4 +105,4 @@ const CreateReservation = () =>  {
     )
 
 }
-export default CreateReservation;
+export default ReservationDetails;
