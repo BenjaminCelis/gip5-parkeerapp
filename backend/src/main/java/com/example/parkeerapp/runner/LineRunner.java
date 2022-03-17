@@ -47,7 +47,6 @@ public class LineRunner implements CommandLineRunner {
                 Parkingspot p = new Parkingspot(i,j);
                 parkingspotRepository.save(p);
             }
-
         }
 
     }

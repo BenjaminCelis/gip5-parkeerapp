@@ -59,7 +59,7 @@ public class Parkingspot {
 
 
     public String getSpotCode() {
-        return floor + " " + spot;
+        return floor + "." + spot;
     }
 
     public boolean isTaken(){
