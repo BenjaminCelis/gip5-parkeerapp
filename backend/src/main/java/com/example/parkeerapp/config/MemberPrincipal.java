@@ -16,12 +16,12 @@ public class MemberPrincipal  {
     public Member getMember(){ return member;}
 
     //get role
-    @Override
+
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + member.getRole()));
     }
 
-    @Override
+
     public String getPassword() {
         return member.getPassword();
     }

@@ -28,6 +28,11 @@ public class Parkingspot {
         this.spot = spot;
     }
 
+    public Parkingspot(int floor, int spot) {
+        this.floor = floor;
+        this.spot = spot;
+    }
+
     public long getId() {
         return id;
     }

@@ -40,6 +40,12 @@ public class Car {
         this.brand = brand;
     }
 
+    public Car(Member member, String licensePlate, String color, String brand) {
+        this.member = member;
+        this.licensePlate = licensePlate;
+        this.color = color;
+        this.brand = brand;
+    }
 
     public long getId() {
         return id;

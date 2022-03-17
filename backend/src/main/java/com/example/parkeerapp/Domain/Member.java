@@ -36,6 +36,15 @@ public class Member {
 
     }
 
+    public Member( String firstname, String lastname, String password, String role, String email) {
+
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+        this.role = role;
+        this.email = email;
+    }
+
     private Member(Builder builder){
         setId(builder.id);
         setFirstname(builder.firstname);
