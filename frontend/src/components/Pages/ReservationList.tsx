@@ -5,7 +5,7 @@ import {Card, Table, Container, Button, Form, Row, Col} from "react-bootstrap";
 const CreateReservation = () =>  {
     return (
         <Container >
-            <Table className="infocard rounded-3">
+            <Table className="infocard rounded-3 allreservationstable">
                 <thead>
                 <tr>
                     <th scope="col"><h4>Name</h4></th>
