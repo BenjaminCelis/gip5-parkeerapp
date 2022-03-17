@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,6 +48,11 @@ public class ParkingService {
         return userRepository.findAll();
     }
 
+    public User getUser(Long userId) {
+        if(!userExists(userId)) throw new IllegalArgumentException();
+        return userRepository.findById(userId).get();
+    }
+
     //CARS
     public Car makeCar(Car car){
         return carRepository.save(car);
@@ -71,7 +77,7 @@ public class ParkingService {
         return freeSpots;
     }
     //TODO
-    public List<Parkingspot> getFreeParkingspots(Date d){
+    public List<Parkingspot> getFreeParkingspots(LocalDateTime d){
         List<Parkingspot> takenSpots = new ArrayList<>();
 
         return takenSpots;
@@ -110,4 +116,6 @@ public class ParkingService {
         reservation = reservationRepository.save(reservation);
         return reservation;
     }
+
+
 }

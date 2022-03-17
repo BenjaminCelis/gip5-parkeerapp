@@ -4,10 +4,7 @@ import com.example.parkeerapp.Domain.Parkingspot;
 import com.example.parkeerapp.Domain.User;
 import com.example.parkeerapp.Services.ParkingService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,15 @@ public class UserResource {
     @GetMapping
     public ResponseEntity<List<User>> getUsers(){
         return ResponseEntity.ok(service.getUsers( ));
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUser(@PathVariable("userId") Long userId){
+        if(userId<1)
+            return ResponseEntity.badRequest().build();
+        if(!service.userExists(userId))
+            return ResponseEntity.notFound().build();
+        User user =  service.getUser(userId);
+        return ResponseEntity.ok(user);
     }
 }
