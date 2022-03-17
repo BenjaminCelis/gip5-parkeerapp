@@ -18,8 +18,7 @@ public class Member {
     @JoinColumn(name="USER_ID")
     private User user;
 
-    @OneToMany(mappedBy = "member")
-    private Set<Car> cars;
+
 
     public Member(){
 
@@ -29,6 +28,7 @@ public class Member {
         setId(builder.id);
         setUser(builder.user);
     }
+
 
     public long getId() {
         return id;
@@ -46,28 +46,9 @@ public class Member {
         this.user = user;
     }
 
-    public Set<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(Set<Car> cars) {
-        this.cars = cars;
-    }
 
 
-    public String getFullName() {
-        return user + " " ;
-    }
 
-    public Set<Reservation> getReservations(){
-        Set<Reservation> reservations = new HashSet<>();
-        for (Car car : this.getCars()){
-            for(Reservation reservation : car.getReservations()){
-                reservations.add(reservation);
-            }
-        }
-        return reservations;
-    }
 
 
     public static final class Builder {

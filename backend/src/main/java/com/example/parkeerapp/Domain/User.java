@@ -1,6 +1,8 @@
 package com.example.parkeerapp.Domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="User")
@@ -27,11 +29,42 @@ public class User {
 
     @Column(name="EMAIL", unique = true)
     private String email;
+    @OneToMany(mappedBy = "member")
+    private Set<Car> cars;
 
     public User(){
 
     }
 
+    public User(String firstName, String lastname,  String password, String role, String email) {
+        this.firstName = firstName;
+        this.lastname = lastname;
+
+        this.password = password;
+        this.role = role;
+        this.email = email;
+    }
+
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
+    }
+
+
+    public String getFullName() {
+        return firstName + " " + lastname ;
+    }
+    public Set<Car> getCars() {
+        return cars;
+    }
+    public Set<Reservation> getReservations(){
+        Set<Reservation> reservations = new HashSet<>();
+        for (Car car : this.getCars()){
+            for(Reservation reservation : car.getReservations()){
+                reservations.add(reservation);
+            }
+        }
+        return reservations;
+    }
     private User(Builder builder){
         setId(builder.id);
         setFirstName(builder.firstname);

@@ -1,9 +1,6 @@
 package com.example.parkeerapp.Services;
 
-import com.example.parkeerapp.Domain.Car;
-import com.example.parkeerapp.Domain.Member;
-import com.example.parkeerapp.Domain.Parkingspot;
-import com.example.parkeerapp.Domain.Reservation;
+import com.example.parkeerapp.Domain.*;
 import com.example.parkeerapp.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,14 +17,17 @@ public class ParkingService {
     private final CarRepository carRepository;
     private final ParkingspotRepository parkingspotRepository;
     private final ReservationRepository reservationRepository;
+    private final UserRepository userRepository;
+
 
     @Autowired
-    public ParkingService(AdminRepository adminRepository, MemberRepository memberRepository, CarRepository carRepository, ParkingspotRepository parkingspotRepository, ReservationRepository reservationRepository) {
+    public ParkingService(AdminRepository adminRepository, MemberRepository memberRepository, CarRepository carRepository, ParkingspotRepository parkingspotRepository, ReservationRepository reservationRepository, UserRepository userRepository) {
         this.adminRepository = adminRepository;
         this.memberRepository = memberRepository;
         this.carRepository = carRepository;
         this.parkingspotRepository = parkingspotRepository;
         this.reservationRepository = reservationRepository;
+        this.userRepository = userRepository;
     }
 
     //MEMBER
@@ -82,8 +82,8 @@ public class ParkingService {
             throw new IllegalArgumentException();
         }
         List<Reservation> reservations = new ArrayList<>();
-        Member member = memberRepository.findById(memberId).get();
-        for(Car car: member.getCars()){
+        User user = userRepository.findById(memberId).get();
+        for(Car car: user.getCars()){
             reservations.addAll(car.getReservations());
         }
         return reservations;

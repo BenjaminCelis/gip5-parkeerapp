@@ -1,10 +1,7 @@
 package com.example.parkeerapp.runner;
 
 import com.example.parkeerapp.Domain.*;
-import com.example.parkeerapp.dao.CarRepository;
-import com.example.parkeerapp.dao.MemberRepository;
-import com.example.parkeerapp.dao.ParkingspotRepository;
-import com.example.parkeerapp.dao.ReservationRepository;
+import com.example.parkeerapp.dao.*;
 import org.springframework.boot.CommandLineRunner;
 
 public class LineRunner implements CommandLineRunner {
@@ -13,20 +10,23 @@ public class LineRunner implements CommandLineRunner {
     private final CarRepository carRepository;
     private final ParkingspotRepository parkingspotRepository;
     private final ReservationRepository reservationRepository;
+    private final UserRepository userRepository;
 
-    public LineRunner(MemberRepository memberRepository, CarRepository carRepository, ParkingspotRepository parkingspotRepository, ReservationRepository reservationRepository) {
+
+    public LineRunner(MemberRepository memberRepository, CarRepository carRepository, ParkingspotRepository parkingspotRepository, ReservationRepository reservationRepository, UserRepository userRepository) {
         this.memberRepository = memberRepository;
         this.carRepository = carRepository;
         this.parkingspotRepository = parkingspotRepository;
         this.reservationRepository = reservationRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public void run(String... args) throws Exception{
-        Member benja = new Member("Benja","Celis","team7","member","benja@celis.be");
-        memberRepository.save(benja);
-        Member igor = new Member("Igor","Jemuce","team7","member","igor@jemuce.be");
-        memberRepository.save(igor);
+        User benja = new User("Benja","Celis","team7","member","benja@celis.be");
+        userRepository.save(benja);
+        User igor = new User("Igor","Jemuce","team7","member","igor@jemuce.be");
+        userRepository.save(igor);
 
         Car lambo = new Car(igor, "1-NWG-502","YELLOW", "Lamborgini");
         Car fera = new Car(igor, "BALLER","RED", "Ferrari");

@@ -12,8 +12,8 @@ public class Car {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Car(Set<Reservation> reservations) {
         this.reservations = reservations;
@@ -32,16 +32,16 @@ public class Car {
     private String brand;
 
 
-    public Car(long id, Member member, String licensePlate, String color, String brand) {
+    public Car(long id, User user, String licensePlate, String color, String brand) {
         this.id = id;
-        this.member = member;
+        this.user = user;
         this.licensePlate = licensePlate;
         this.color = color;
         this.brand = brand;
     }
 
-    public Car(Member member, String licensePlate, String color, String brand) {
-        this.member = member;
+    public Car(User user, String licensePlate, String color, String brand) {
+        this.user = user;
         this.licensePlate = licensePlate;
         this.color = color;
         this.brand = brand;
@@ -87,12 +87,12 @@ public class Car {
         this.brand = brand;
     }
 
-    public Member getOwner() {
-        return member;
+    public User getOwner() {
+        return user;
     }
 
-    public void setOwner(Member member) {
-        this.member = member;
+    public void setOwner(User user) {
+        this.user = user;
     }
 
 
