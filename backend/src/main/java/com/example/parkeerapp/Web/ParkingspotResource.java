@@ -4,6 +4,7 @@ import com.example.parkeerapp.Domain.Parkingspot;
 import com.example.parkeerapp.Services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +26,9 @@ public class ParkingspotResource {
 
     //@ApiOperation("Haalt alle parkeerplaatsen op")
     @GetMapping
+    @CrossOrigin(origins = "*")
     public ResponseEntity<List<Parkingspot>> getParkingspots(){
-        return ResponseEntity.ok(service.getParkingspots());
+        return ResponseEntity.ok(service.getParkingspots( ));
     }
 
 }

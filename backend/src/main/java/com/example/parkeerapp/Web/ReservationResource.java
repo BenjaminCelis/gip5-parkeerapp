@@ -6,10 +6,7 @@ import com.example.parkeerapp.Services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,12 +20,12 @@ public class ReservationResource {
     public ReservationResource(ParkingService service) {
         this.service = service;
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping
     public ResponseEntity<List<Reservation>> getReservations(){
         return ResponseEntity.ok(service.getReservations());
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/{reservationId}")
     public ResponseEntity<Reservation> getReservation(@PathVariable("reservationId") Long reservationId){
     if(reservationId<1)
@@ -38,7 +35,7 @@ public class ReservationResource {
         Reservation reservation =  service.getReservation(reservationId);
         return ResponseEntity.ok(reservation);
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/member/{memberId}")
     public ResponseEntity<List<Reservation>> getMemberReservations(@PathVariable("memberId") Long memberId){
         if(service.memberExists(memberId)){
