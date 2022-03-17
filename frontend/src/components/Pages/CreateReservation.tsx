@@ -210,7 +210,9 @@ const CreateReservation = (props:any) =>  {
                                         <option key={parkingspot.id} value={parkingspot.id}>{parkingspot.spotCode}</option>
                                         ))}
                                     </Form.Select>
-                                <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
                                 <Button variant="success btn-warning" type="submit">
                                     Confirm your reservation
                                 </Button>
