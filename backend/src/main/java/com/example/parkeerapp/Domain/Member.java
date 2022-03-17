@@ -2,29 +2,35 @@ package com.example.parkeerapp.Domain;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringJoiner;
 
 @Entity
-@Table(name= "Member")
+@Table(name= "MEMBER")
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "FIRSTNAME")
+    @Column(name = "firstName")
     private String firstname;
 
-    @Column(name = "LASTNAME")
+    @Column(name = "lastName")
     private String lastname;
 
-    @Column(name="PASSWORD")
+    @Column(name="password")
     private String password;
 
-    @Column(name="ROLE")
+    @Column(name="role")
     private String role;
 
-    @Column(name="EMAIL", unique = true)
+    @Column(name="email", unique = true)
     private String email;
+
+    @OneToMany(mappedBy = "member")
+    private Set<Car> cars;
 
     public Member(){
 
@@ -62,6 +68,29 @@ public class Member {
     public String getRole() {return role;}
 
     public void setRole(String role) {this.role = role;}
+
+    public Set<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
+    }
+
+
+    public String getFullName() {
+        return firstname + " " + lastname;
+    }
+
+    public Set<Reservation> getReservations(){
+        Set<Reservation> reservations = new HashSet<>();
+        for (Car car : this.getCars()){
+            for(Reservation reservation : car.getReservations()){
+                reservations.add(reservation);
+            }
+        }
+        return reservations;
+    }
 
     @Override
     public String toString() {
