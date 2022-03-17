@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 function MainFooter() {
     return (
         <footer>
-            <p> Hier is de footer </p>
+            <p> Made by: Benjamin Celis, Igor Jemuce, Maarten Van Leemput, Nathan Van de Wildebergh & Robin Morren</p>
         </footer>);
 
 
