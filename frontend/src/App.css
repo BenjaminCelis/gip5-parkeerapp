@@ -147,3 +147,16 @@ a {
 .infocardcreate {
     padding-bottom: 8px;
 }
+
+table {
+    background-color: #153965;
+    padding: 25px;
+    margin: 15px;
+
+}
+
+tr {
+    color: #d8a31a;
+
+}
+
