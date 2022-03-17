@@ -35,7 +35,7 @@ const CreateReservation = (props:any) =>  {
     }else{
         return (
             <Container>
-                <Table className="infocard rounded-3">
+                <Table className="infocard  rounded-3">
                     <thead>
                         <tr>
                             <th scope="col"><h4>Name</h4></th>
@@ -43,7 +43,6 @@ const CreateReservation = (props:any) =>  {
                             <th scope="col"><h4>Car</h4></th>
                             <th scope="col"><h4>Number plate</h4></th>
                             <th scope="col"><h4>Parking spot</h4></th>
-                            <th scope="col"><h4>Date</h4></th>
                             <th scope="col"><h4>From</h4></th>
                             <th scope="col"><h4>Until</h4></th>
                         </tr>
@@ -52,13 +51,18 @@ const CreateReservation = (props:any) =>  {
                     {reservations
                         .map(reservation => (
                         <tr key={reservation.id}>
-                            <td>{reservation.car.owner.voornaam} {reservation.car.owner.achternaam}</td>
+                            <td>{reservation.car.owner.firstname} {reservation.car.owner.lastname}</td>
                             <td>{reservation.car.owner.email}</td>
+                            <td>{reservation.car.color}, {reservation.car.brand}</td>
                             <td>{reservation.car.licensePlate}</td>
                             <td>{reservation.parkingspot.spotCode}</td>
-                            <td>{reservation.reservationDate}</td>
                             <td>{reservation.startTime}</td>
                             <td>{reservation.endTime}</td>
+                            <td>
+                                <Link to={`/reservation/details/${reservation.id}`}>
+                                    <Button className="btn btn-primary">Details</Button>
+                                </Link>
+                            </td>
                         </tr>
                     ))}
                     </tbody>

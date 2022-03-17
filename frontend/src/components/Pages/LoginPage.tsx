@@ -46,7 +46,7 @@ const LoginPage = () =>  {
                     </Card.Body>
                 </Card>
                 </div>
-                <Card border="primary" className="registrationcard" style={{ width: '25rem' }}>
+                <Card border="primary" className="card-acc-registration" style={{ width: '25rem' }}>
                     <Card.Body>
                         <Card.Title><h2>Register</h2></Card.Title>
                         <Card.Text>

@@ -2,8 +2,38 @@ import {Link, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Card, Table, Container, Button, Form, Row, Col, Dropdown, ListGroup} from "react-bootstrap";
 
-const CreateReservation = () =>  {
-    return (
+const CreateReservation = (props:any) =>  {
+                           const location = useLocation();
+                           const [parkingspots, setParkingspots] = useState([{
+                               id: props.parkingspot ? props.parkingspot.id : '',
+                               floor: props.parkingspot ? props.parkingspot.floor : '',
+                               spot: props.parkingspot ? props.parkingspot.spot : '',
+                               spotCode: props.parkingspot ? props.parkingspot.spotCode : '',
+                               taken: props.parkingspot ? props.parkingspot.taken : '',
+
+                           },])
+                           const [error, setError] = useState(null)
+                           const [fetched, setFetched] = useState(false);
+
+                           const fetchParkingspots = () => {
+                               fetch("http://localhost:8080/parkingspot")
+                                   .then(res => res.json())
+                                   .then(parkingspots => setParkingspots(parkingspots))
+                                   .catch(e => setError(e))
+                                   .finally(() => setFetched(true))
+                           };
+
+                           useEffect(() => {
+                               fetchParkingspots()
+                           }, [location])
+
+                           if(!fetched){
+                                   return <p>Loading...</p>
+                               }
+                           if (error){
+                               return <div>Error: {error}</div>;
+                           }else{
+           return (
         <Container>
             <div className="main">
                 <div className="leftpanel">
@@ -73,11 +103,11 @@ const CreateReservation = () =>  {
                                 <br/>
                                 <select>
                                     <option>Select your parking spot:</option>
-                                    <option>1.01</option>
-                                    <option>1.02</option>
-                                    <option>1.03</option>
-                                    <option>2.01</option>
-                                    <option>2.02</option>
+                                    {parkingspots
+                                    .filter(parkingspot => parkingspot.taken == false)
+                                    .map(parkingspot => (
+                                    <option key={parkingspot.id}>{parkingspot.spotCode}</option>
+                                    ))}
                                 </select>
 
                                 <br/>
@@ -99,6 +129,6 @@ const CreateReservation = () =>  {
             </div>
         </Container>
     )
-
+    }
 }
 export default CreateReservation;
