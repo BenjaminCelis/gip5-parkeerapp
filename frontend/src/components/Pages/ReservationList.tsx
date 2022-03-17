@@ -4,7 +4,7 @@ import {Card, Table, Container, Button, Form, Row, Col} from "react-bootstrap";
 
 const ReservationList = (props:any) =>  {
     const location = useLocation();
-    const [reservations, setReservation] = useState([{
+    const [reservations, setReservations] = useState([{
         id: props.reservation ? props.reservation.id : '',
         car: props.reservation ? props.reservation.car : '',
         startTime: props.reservation ? props.reservation.startTime : '',
@@ -18,7 +18,7 @@ const ReservationList = (props:any) =>  {
     const fetchReservations = () => {
         fetch("http://localhost:8080/reservation")
             .then(res => res.json())
-            .then(reservations => setReservation(reservations))
+            .then(reservations => setReservations(reservations))
             .catch(e => setError(e))
             .finally(() => setFetched(true))
     };
