@@ -106,6 +106,7 @@ a {
     float: left;
     padding: 25px;
     margin-left: -75px;
+    margin-top: 15px;
 }
 
 .infocard {
@@ -115,6 +116,7 @@ a {
 
 .logincard {
     background-color: #153965 !important;
+    padding: 2px;
 
 }
 
@@ -148,7 +150,7 @@ a {
     padding-bottom: 8px;
 }
 
-table {
+.allreservationstable {
     background-color: #153965;
     padding: 25px;
     margin: 15px;
@@ -160,3 +162,33 @@ tr {
 
 }
 
+.card-header {
+    background-color: #153965 !important;
+    color: #d8a31a;
+}
+
+h3 {
+    color: white;
+}
+
+
+
+.yourregistrationscard  {
+    color: white;
+    width: 50%;
+    float: left;
+    padding: 5px;
+    margin-left: 50px;
+    height: 500px;
+    width: 600px;
+}
+
+.yourregisteredcarscard {
+    color: white;
+    width: 50%;
+    float: left;
+    padding: 5px;
+    margin-left: 70px;
+    height: 500px;
+
+}
