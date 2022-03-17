@@ -1,5 +1,6 @@
 package com.example.parkeerapp.Services;
 
+import com.example.parkeerapp.DTO.ReservationDTO;
 import com.example.parkeerapp.DTO.UserDTO;
 import com.example.parkeerapp.Domain.*;
 import com.example.parkeerapp.dao.*;
@@ -63,6 +64,10 @@ public class ParkingService {
         return cars;
     }
 
+    public Car getCar(Long carId){
+        return carRepository.findById(carId).orElseThrow();
+    }
+
     public Car makeCar(Car car){
         return carRepository.save(car);
     }
@@ -74,6 +79,15 @@ public class ParkingService {
     }
 
     //PARKINGSPOTS
+
+    public boolean parkingspotExists(Long parkingspotId){
+        return parkingspotRepository.existsById(parkingspotId)        ;
+    }
+
+    public Parkingspot getParkingspot(Long parkingspotId){
+        return parkingspotRepository.findById(parkingspotId).orElseThrow();
+    }
+
     public List<Parkingspot> getParkingspots() {
         return parkingspotRepository.findAll();
     }
@@ -120,7 +134,14 @@ public class ParkingService {
         return reservations;
     }
 
-    public Reservation makeReservation(Reservation reservation) {
+    public Reservation makeReservation(ReservationDTO reservationDTO) {
+        if(!carExists(reservationDTO.getCarId()) || !parkingspotExists(reservationDTO.getParkingspotId())){
+            throw new IllegalArgumentException();
+        }
+        Car car = getCar(reservationDTO.getCarId());
+        Parkingspot parkingspot = getParkingspot(reservationDTO.getParkingspotId());
+
+        Reservation reservation = new Reservation(parkingspot,car,LocalDate.now(),reservationDTO.getEndTime(),reservationDTO.getStartTime());
         reservation.setReservationDate(LocalDate.now());
         reservation = reservationRepository.save(reservation);
         return reservation;

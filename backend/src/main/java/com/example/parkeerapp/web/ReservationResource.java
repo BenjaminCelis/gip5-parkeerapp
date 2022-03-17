@@ -1,5 +1,6 @@
 package com.example.parkeerapp.web;
 
+import com.example.parkeerapp.DTO.ReservationDTO;
 import com.example.parkeerapp.Domain.Parkingspot;
 import com.example.parkeerapp.Domain.Reservation;
 import com.example.parkeerapp.Services.ParkingService;
@@ -49,8 +50,11 @@ public class ReservationResource {
     }
 
     @PostMapping
-    public ResponseEntity<Reservation> makeReservation(@RequestBody Reservation reservation){
-        if(reservation.getCar() == null || reservation.getParkingspot() == null){
+    public ResponseEntity<Reservation> makeReservation(@RequestBody ReservationDTO reservation){
+        if(reservation.getCarId() == null || reservation.getParkingspotId() == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        if(reservation.getCarId() <= 0 || reservation.getParkingspotId() <= 0){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 

@@ -63,6 +63,14 @@ public class Reservation {
         this.startTime = startTime;
     }
 
+    public Reservation(Parkingspot parkingspot, Car car, LocalDate reservationDate, LocalDateTime endTime, LocalDateTime startTime) {
+        this.parkingspot = parkingspot;
+        this.car = car;
+        this.reservationDate = reservationDate;
+        this.endTime = endTime;
+        this.startTime = startTime;
+    }
+
     public long getId() {
         return id;
     }
