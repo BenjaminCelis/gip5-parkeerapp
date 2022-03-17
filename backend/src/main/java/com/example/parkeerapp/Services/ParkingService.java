@@ -41,12 +41,10 @@ public class ParkingService {
     public boolean userExists(Long userId){
         return userRepository.existsById(userId);
     }
-    public List<UserDTO> getUsers(){
-        List<UserDTO> userDTOS = new ArrayList<>();
-        for (User u:userRepository.findAll()) {
 
-        }
-        return userDTOS;
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 
     //CARS
