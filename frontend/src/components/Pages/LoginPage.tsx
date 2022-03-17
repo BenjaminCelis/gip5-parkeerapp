@@ -72,6 +72,7 @@ const LoginPage = () =>  {
                                     <Form.Control type="password" placeholder="Enter password" />
                                 </Form.Group>
                                 <br/>
+                                <br/>
                                 <Button variant="success btn-warning" type="submit">
                                     Register
                                 </Button>
