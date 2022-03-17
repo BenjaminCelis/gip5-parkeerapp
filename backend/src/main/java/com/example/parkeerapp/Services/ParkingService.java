@@ -1,5 +1,6 @@
 package com.example.parkeerapp.Services;
 
+import com.example.parkeerapp.DTO.UserDTO;
 import com.example.parkeerapp.Domain.*;
 import com.example.parkeerapp.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,18 @@ public class ParkingService {
     //MEMBER
     public boolean memberExists(Long memberId){
         return memberRepository.existsById(memberId);
+    }
+
+    //USER
+    public boolean userExists(Long userId){
+        return userRepository.existsById(userId);
+    }
+    public List<UserDTO> getUsers(){
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for (User u:userRepository.findAll()) {
+
+        }
+        return userDTOS;
     }
 
     //CARS
