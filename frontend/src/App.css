@@ -93,7 +93,7 @@ a {
     background-color: #d8a31a;
 }
 
-.registrationcard  {
+.card-acc-registration  {
     background-color: #153965 !important;
     width: 50%;
     float: left;
@@ -102,10 +102,7 @@ a {
     margin-top: 15px;
 }
 
-.infocard {
-    background-color: #153965 !important;
 
-}
 
 .logincard {
     background-color: #153965 !important;
@@ -173,4 +170,8 @@ tr {
     height: 500px;
     width: 30%;
 
+}
+
+.infocard {
+    background-color: #153965;
 }

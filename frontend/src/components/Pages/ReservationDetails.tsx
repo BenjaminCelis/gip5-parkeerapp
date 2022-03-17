@@ -6,7 +6,7 @@ const ReservationDetails = () =>  {
     return (
         <Container>
             <div className="main">
-                <Card border="primary" className="infocard rounded-3 leftpanel" style={{ width: '80rem' }}>
+                <Card border="primary" className="infocard rounded-3 leftpanel " style={{ width: '80rem' }}>
                         <Card.Title>
                             <div className="card-header">
                                 <h2>Benjamin Celis</h2>

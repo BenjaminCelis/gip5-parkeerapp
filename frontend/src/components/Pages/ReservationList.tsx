@@ -35,7 +35,7 @@ const CreateReservation = (props:any) =>  {
     }else{
         return (
             <Container>
-                <Table className="infocard rounded-3">
+                <Table className="infocard  rounded-3">
                     <thead>
                         <tr>
                             <th scope="col"><h4>Name</h4></th>
