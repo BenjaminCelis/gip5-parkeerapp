@@ -30,11 +30,11 @@ public class Reservation {
     private LocalDate reservationDate;
 
     @Column(name = "endTime")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyy HH:mm")
     private LocalDateTime endTime;
 
     @Column(name = "startTime")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyy HH:mm")
     private LocalDateTime startTime;
 
     public Car getCar() {
