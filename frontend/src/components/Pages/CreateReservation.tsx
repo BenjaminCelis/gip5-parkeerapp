@@ -41,8 +41,8 @@ const CreateReservation = (props:any) =>  {
                         <Card.Body>
                             <Card.Text>
                                 <p>
-                                    On this page of the website you can rent your parking spot. Make sure every field is filled in, afterwards you
-                                    can press on the 'confirm your reservation button' to register your reservation.
+                                    On this page of the website you can rent your parking spot. Make sure every field is filled in. Afterwards you
+                                    can press on the 'confirm your reservation' button to register your reservation.
                                 </p>
                             </Card.Text>
                         </Card.Body>
