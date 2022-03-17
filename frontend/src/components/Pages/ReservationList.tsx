@@ -16,7 +16,7 @@ const CreateReservation = (props:any) =>  {
     const [fetched, setFetched] = useState(false);
 
     const fetchReservations = () => {
-        fetch("http://localhost:8080/api/reservation")
+        fetch("http://localhost:8080/reservation")
             .then(res => res.json())
             .then(reservations => setReservation(reservations))
             .catch(e => setError(e))
