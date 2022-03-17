@@ -6,6 +6,7 @@ import com.example.parkeerapp.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +56,9 @@ public class ParkingService {
     public boolean carExists(Long carId){
         return carRepository.existsById(carId);
     }
+    public List<Car> getCars(){
+        return carRepository.findAll();
+    }
 
     //PARKINGSPOTS
     public List<Parkingspot> getParkingspots() {
@@ -100,5 +104,11 @@ public class ParkingService {
             reservations.addAll(car.getReservations());
         }
         return reservations;
+    }
+
+    public Reservation makeReservation(Reservation reservation) {
+        reservation.setReservationDate(LocalDate.now());
+        reservation = reservationRepository.save(reservation);
+        return reservation;
     }
 }
