@@ -1,5 +1,7 @@
 package com.example.parkeerapp.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -17,6 +19,7 @@ public class Parkingspot {
     private int spot;
 
     @OneToMany(mappedBy = "parkingspot")
+    @JsonIgnore
     private Set<Reservation> reservations;
 
     public Parkingspot() {
