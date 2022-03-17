@@ -5,9 +5,6 @@ body{
     background-color: #f1f1e6;
 }
 
-.beigeBackground{
-    background-color: #f1f1e6;
-}
 
 .header {
     width: 100%;
@@ -54,7 +51,7 @@ footer{
     padding-bottom:3rem;
 }
 .card {
-    background-color: #153965;
+    background-color: #153965!important;
     margin: 0 auto;
 
     margin-bottom: 10px;
@@ -134,10 +131,6 @@ a {
     margin-left: -200px;
 }
 
-.createcards {
-    background-color: #153965 !important;
-}
-
 .selectcarselector {
     padding-bottom: -10px;
 }
@@ -150,10 +143,11 @@ a {
     padding-bottom: 8px;
 }
 
-.allreservationstable {
+.registration-list-all {
     background-color: #153965;
-    padding: 25px;
+    padding: 2px;
     margin: 15px;
+    height: auto;
 
 }
 
@@ -175,20 +169,19 @@ h3 {
 
 .yourregistrationscard  {
     color: white;
-    width: 50%;
     float: left;
     padding: 5px;
     margin-left: 50px;
     height: 500px;
-    width: 600px;
+
 }
 
-.yourregisteredcarscard {
+.card-your-cars {
     color: white;
-    width: 50%;
     float: left;
     padding: 5px;
     margin-left: 70px;
     height: 500px;
+    width: 30%;
 
 }

@@ -17,7 +17,7 @@ const CreateReservation = () =>  {
             </div>
 
 
-                <Card border="primary" className="infocard rounded-3 yourregisteredcarscard " style={{ width: '30rem' }}>
+                <Card border="primary" className=" rounded-3 card-your-cars car " style={{ width: '30rem' }}>
                     <Card.Body>
                         <Card.Title><h2>Your registered cars:</h2></Card.Title>
                         <Card.Text>
@@ -50,8 +50,6 @@ const CreateReservation = () =>  {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-
-
 
                 <Card border="primary" className="infocard rounded-3 yourregistrationscard  " style={{ width: '40rem' }}>
                     <Card.Body>
