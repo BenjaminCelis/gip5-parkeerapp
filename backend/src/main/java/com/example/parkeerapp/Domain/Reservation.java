@@ -1,6 +1,7 @@
 package com.example.parkeerapp.Domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -24,13 +25,13 @@ public class Reservation {
     }
 
     @Column(name = "reservationDate")
-    private Date reservationDate;
+    private LocalDate reservationDate;
 
     @Column(name = "endTime")
-    private Date endTime;
+    private LocalDateTime endTime;
 
     @Column(name = "startTime")
-    private Date startTime;
+    private LocalDateTime startTime;
 
     public Car getCar() {
         return car;
@@ -51,7 +52,7 @@ public class Reservation {
 
 
 
-    public Reservation(long id, Date reservationDate, Date endTime, Date startTime) {
+    public Reservation(long id, LocalDate reservationDate, LocalDateTime endTime, LocalDateTime startTime) {
         this.id = id;
         this.reservationDate = reservationDate;
         this.endTime = endTime;
@@ -66,27 +67,27 @@ public class Reservation {
         this.id = id;
     }
 
-    public Date getReservationDate() {
+    public LocalDate getReservationDate() {
         return reservationDate;
     }
 
-    public void setReservationDate(Date reservationDate) {
+    public void setReservationDate(LocalDate reservationDate) {
         this.reservationDate = reservationDate;
     }
 
-    public Date getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
-    public Date getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
