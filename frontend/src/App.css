@@ -69,7 +69,7 @@ h1 {
 
 .navlink {
     color: #d8a31a;
-    font-size: regular;
+    font-size: large;
 }
 
 h2 {
@@ -147,3 +147,16 @@ a {
 .infocardcreate {
     padding-bottom: 8px;
 }
+
+table {
+    background-color: #153965;
+    padding: 25px;
+    margin: 15px;
+
+}
+
+tr {
+    color: #d8a31a;
+
+}
+
