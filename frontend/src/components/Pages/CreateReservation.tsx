@@ -2,8 +2,38 @@ import {Link, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Card, Table, Container, Button, Form, Row, Col, Dropdown, ListGroup} from "react-bootstrap";
 
-const CreateReservation = () =>  {
-    return (
+const CreateReservation = (props:any) =>  {
+                           const location = useLocation();
+                           const [reservations, setReservation] = useState([{
+                               id: props.reservation ? props.reservation.id : '',
+                               car: props.reservation ? props.reservation.car : '',
+                               startTime: props.reservation ? props.reservation.startTime : '',
+                               endTime: props.reservation ? props.reservation.endTime : '',
+                               reservationDate: props.reservation ? props.reservation.reservationDate : '',
+                               parkingspot: props.reservation ? props.reservation.parkingspot : ''
+                           },])
+                           const [error, setError] = useState(null)
+                           const [fetched, setFetched] = useState(false);
+
+                           const fetchReservations = () => {
+                               fetch("http://localhost:8080/reservation")
+                                   .then(res => res.json())
+                                   .then(reservations => setReservation(reservations))
+                                   .catch(e => setError(e))
+                                   .finally(() => setFetched(true))
+                           };
+
+                           useEffect(() => {
+                               fetchReservations()
+                           }, [location])
+
+                           if(!fetched){
+                                   return <p>Loading...</p>
+                               }
+                           if (error){
+                               return <div>Error: {error}</div>;
+                           }else{
+           return (
         <Container>
             <div className="main">
                 <div className="leftpanel">
@@ -99,6 +129,6 @@ const CreateReservation = () =>  {
             </div>
         </Container>
     )
-
+    }
 }
 export default CreateReservation;
