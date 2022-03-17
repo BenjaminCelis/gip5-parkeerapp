@@ -94,7 +94,29 @@ a {
 .leftpanel {
     width: 50%;
     float: left;
-    padding: 2px;
+    padding: 5px;
     margin-left: 70px;
 
+}
+.rightpanel {
+    width: 50%;
+    float: left;
+    padding: 5px;
+    margin-left: -200px;
+}
+
+.createcards {
+    background-color: #153965 !important;
+}
+
+.selectcarselector {
+    padding-bottom: -10px;
+}
+
+.parkingspotselector {
+    padding-bottom: 18px;
+}
+
+.infocardcreate {
+    padding-bottom: 8px;
 }
