@@ -6,7 +6,9 @@ const UserList = (props:any) =>  {
     const location = useLocation();
     const [users, setUsers] = useState([{
         id: props.user ? props.user.id : '',
-        userDTO: props.user ? props.user.userDTO : '',
+        firstname: props.user ? props.user.firstname : '',
+        lastname: props.user ? props.user.lastname : '',
+        email: props.user ? props.user.email : ''
     },])
     const [error, setError] = useState(null)
     const [fetched, setFetched] = useState(false);
@@ -34,7 +36,6 @@ const UserList = (props:any) =>  {
                 <Table className="infocard  rounded-3">
                     <thead>
                         <tr>
-                            <th scope="col"><h4>Username</h4></th>
                             <th scope="col"><h4>Name</h4></th>
                             <th scope="col"><h4>E-mail</h4></th>
                         </tr>
@@ -43,9 +44,8 @@ const UserList = (props:any) =>  {
                     {users
                         .map(user => (
                         <tr key={user.id}>
-                            <td>{user.userDTO.username}</td>
-                            <td>{user.userDTO.firstname} {user.userDTO.lastname} </td>
-                            <td>{user.userDTO.email}</td>
+                            <td>{user.firstname} {user.lastname} </td>
+                            <td>{user.email}</td>
                             <td>
                                 <Link to={`/user/details/${user.id}`}>
                                     <Button className="btn btn-primary">Details</Button>
