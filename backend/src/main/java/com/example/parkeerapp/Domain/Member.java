@@ -47,9 +47,10 @@ public class Member {
     }
 
 
+    public Member(User user) {
 
-
-
+        this.user = user;
+    }
 
     public static final class Builder {
         private long id;
