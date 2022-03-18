@@ -165,6 +165,12 @@ public class ParkingService {
         return reservation;
     }
 
+    public void deleteReservation(Long reservationId) {
+        if(!reservationExists(reservationId))throw new IllegalArgumentException();
+        Reservation reservation = reservationRepository.findById(reservationId).get();
+        reservationRepository.delete(reservation);
+    }
+
 
 
 }
