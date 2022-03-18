@@ -124,7 +124,7 @@ public class ParkingService {
 
 
     public List<Reservation> getMemberReservations(Long memberId){
-        if(!memberExists(memberId)){
+        if(!userExists(memberId)){
             throw new IllegalArgumentException();
         }
         List<Reservation> reservations = new ArrayList<>();
