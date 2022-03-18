@@ -21,17 +21,17 @@ const CreateReservation = (props:any) =>  {
     },])
     const [reservation, setReservation] = useState({
        id: props.reservation ? props.reservation.id : '',
-       car: props.reservation ? props.reservation.car : '',
+       carId: props.reservation ? props.reservation.carId : '',
        startTime: props.reservation ? props.reservation.startTime : '',
        endTime: props.reservation ? props.reservation.endTime : '',
        reservationDate: props.reservation ? props.reservation.reservationDate : '',
-       parkingspot: props.reservation ? props.reservation.parkingspot : ''
+       parkingspotId: props.reservation ? props.reservation.parkingspotId : ''
     })
 
     const [error, setError] = useState(null)
     const [fetched, setFetched] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
-    const {car, startTime, endTime,parkingspot} = reservation;
+    const {carId, startTime, endTime,parkingspotId} = reservation;
 
 
     const fetchParkingspots = () => {
@@ -57,7 +57,7 @@ const CreateReservation = (props:any) =>  {
     const handleOnSubmit = (event:any) => {
         event.preventDefault();
 
-        const values = [car, endTime, startTime, parkingspot];
+        const values = [carId, endTime, startTime, parkingspotId];
         let errorMsg = '';
 
         const allFieldsFilled = values.every((field) => {
@@ -68,10 +68,10 @@ const CreateReservation = (props:any) =>  {
             if (allFieldsFilled) {
 
                     const reservation = {
-                        car,
+                        carId,
                         endTime,
                         startTime,
-                        parkingspot
+                        parkingspotId
                     };
 
                     const requestOptions = {
@@ -79,7 +79,7 @@ const CreateReservation = (props:any) =>  {
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(reservation)
                             };
-                            fetch('http://localhost:8080/car', requestOptions)
+                            fetch('http://localhost:8080/reservation', requestOptions)
                                 .then(async response => {
                                     const isJson = response.headers.get('content-type')?.includes('application/json');
                                     const data = isJson && await response.json();
@@ -167,7 +167,7 @@ const CreateReservation = (props:any) =>  {
                 <div className="rightpanel">
                     <Card border="primary" className="createcards selectcarselector" style={{ width: '25rem' }}>
                         <Card.Body>
-                            <Form.Group controlId="car">
+                            <Form.Group controlId="carId">
                                 <Form.Label>
                                     <Card.Title>
                                         <h2>Select your car:</h2>
@@ -175,9 +175,9 @@ const CreateReservation = (props:any) =>  {
                                 </Form.Label>
                                 <Card.Text>
                                     <Form.Select
-                                        name="car"
+                                        name="carId"
                                         className="input-control"
-                                        value={car}
+                                        value={carId}
                                         onChange={handleInputChange}>
                                         <option value='' disabled>Choose a Car</option>
                                         {cars
@@ -192,7 +192,7 @@ const CreateReservation = (props:any) =>  {
 
                     <Card border="primary" className=" createcards parkingspotselector " style={{ width: '25rem' }}>
                         <Card.Body>
-                            <Form.Group controlId="parkingspot">
+                            <Form.Group controlId="parkingspotId">
                                 <Form.Label>
                                     <Card.Title>
                                         <h2>Select your Parking Spot:</h2>
@@ -200,9 +200,9 @@ const CreateReservation = (props:any) =>  {
                                 </Form.Label>
                                 <Card.Text>
                                     <Form.Select
-                                        name="parkingspot"
+                                        name="parkingspotId"
                                         className="input-control"
-                                        value={parkingspot}
+                                        value={parkingspotId}
                                         onChange={handleInputChange}>
                                         <option value='' disabled>Choose a Parking Spot</option>
                                         {parkingspots
