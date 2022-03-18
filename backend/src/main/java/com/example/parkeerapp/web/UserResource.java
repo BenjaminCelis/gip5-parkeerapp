@@ -32,7 +32,7 @@ public class UserResource {
             return ResponseEntity.badRequest().build();
         if(!service.userExists(userId))
             return ResponseEntity.notFound().build();
-        User user =  service.getUser(userId);
+        User user = service.getUser(userId);
         return ResponseEntity.ok(user);
     }
 }

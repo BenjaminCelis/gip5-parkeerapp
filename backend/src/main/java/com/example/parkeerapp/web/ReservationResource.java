@@ -4,6 +4,7 @@ import com.example.parkeerapp.DTO.ReservationDTO;
 import com.example.parkeerapp.Domain.Parkingspot;
 import com.example.parkeerapp.Domain.Reservation;
 import com.example.parkeerapp.Services.ParkingService;
+import com.github.dockerjava.api.exception.NotFoundException;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,11 +41,11 @@ public class ReservationResource {
         Reservation reservation =  service.getReservation(reservationId);
         return ResponseEntity.ok(reservation);
     }
-    @GetMapping("/member/{memberId}")
+    @GetMapping("/user/{memberId}")
 
-    public ResponseEntity<List<Reservation>> getMemberReservations(@PathVariable("memberId") Long memberId){
-        if(service.memberExists(memberId)){
-            return ResponseEntity.ok(service.getMemberReservations(memberId));
+    public ResponseEntity<List<Reservation>> getUserReservations(@PathVariable("userId") Long userId){
+        if(service.userExists(userId)){
+            return ResponseEntity.ok(service.getMemberReservations(userId));
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
@@ -61,6 +62,8 @@ public class ReservationResource {
         try{
             return ResponseEntity.status(HttpStatus.CREATED).body(service.makeReservation(reservation));
         }catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }catch (NotFoundException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }

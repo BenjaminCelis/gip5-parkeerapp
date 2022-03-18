@@ -4,6 +4,7 @@ import com.example.parkeerapp.DTO.ReservationDTO;
 import com.example.parkeerapp.DTO.UserDTO;
 import com.example.parkeerapp.Domain.*;
 import com.example.parkeerapp.dao.*;
+import com.github.dockerjava.api.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -136,10 +137,15 @@ public class ParkingService {
 
     public Reservation makeReservation(ReservationDTO reservationDTO) {
         if(!carExists(reservationDTO.getCarId()) || !parkingspotExists(reservationDTO.getParkingspotId())){
-            throw new IllegalArgumentException();
+            throw new NotFoundException("Car/Parkinspot not found");
         }
+
         Car car = getCar(reservationDTO.getCarId());
         Parkingspot parkingspot = getParkingspot(reservationDTO.getParkingspotId());
+
+        if(parkingspot.isTaken(reservationDTO.getStartTime())|| parkingspot.isTaken(reservationDTO.getEndTime())){
+            throw new IllegalArgumentException();
+        }
 
         Reservation reservation = new Reservation(parkingspot,car,LocalDate.now(),reservationDTO.getEndTime(),reservationDTO.getStartTime());
         reservation.setReservationDate(LocalDate.now());
