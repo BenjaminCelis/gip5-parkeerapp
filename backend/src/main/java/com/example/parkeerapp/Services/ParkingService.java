@@ -144,7 +144,7 @@ public class ParkingService {
 
     public Reservation makeReservation(ReservationDTO reservationDTO) {
         if(!carExists(reservationDTO.getCarId()) || !parkingspotExists(reservationDTO.getParkingspotId())){
-            throw new NotFoundException("Car/Parkinspot not found");
+            throw new NotFoundException("Car/Parkingspot not found");
         }
 
         Car car = getCar(reservationDTO.getCarId());
