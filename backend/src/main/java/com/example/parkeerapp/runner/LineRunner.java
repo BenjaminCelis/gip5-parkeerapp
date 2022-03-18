@@ -70,5 +70,18 @@ public class LineRunner implements CommandLineRunner {
         r.setStartTime(LocalDateTime.of(2022,3,16,16, 30));
         reservationRepository.save(r);
 
+
+        Reservation i = new Reservation();
+        i.setCar(fera);
+        Long A = Long.parseLong("39");
+        i.setParkingspot(parkingspotRepository.getById(A));
+        i.setReservationDate(LocalDate.now());
+        i.setEndTime(LocalDateTime.of(2022,3,20,9, 00));
+        i.setStartTime(LocalDateTime.of(2022,3,20,20, 30));
+        reservationRepository.save(i);
+
+
+
+
     }
 }
