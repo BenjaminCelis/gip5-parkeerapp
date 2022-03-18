@@ -71,7 +71,7 @@ public class ReservationResource {
     @DeleteMapping("/{reservationId}")
     public ResponseEntity deleteReservation(@PathVariable("reservationId") Long reservationId){
         if(reservationId<1) return ResponseEntity.badRequest().build();
-        if(!service.carExists(reservationId)) return ResponseEntity.notFound().build();
+        if(!service.reservationExists(reservationId)) return ResponseEntity.notFound().build();
 
         service.deleteReservation(reservationId);
         return ResponseEntity.ok().build();
