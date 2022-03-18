@@ -2,8 +2,38 @@ import {Link, useLocation} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Card, Table, Container, Button, Form, Row, Col} from "react-bootstrap";
 
-const UserDetails = () =>  {
-    return (
+const UserDetails = (props:any) =>  {
+     const location = useLocation();
+     const [users, setUsers] = useState([{
+         id: props.user ? props.user.id : '',
+         firstname: props.user ? props.user.firstname : '',
+         lastname: props.user ? props.user.lastname : '',
+         email: props.user ? props.user.email : ''
+     },])
+     const [error, setError] = useState(null);
+     const [fetched, setFetched] = useState(false);
+     const userId = location.pathname.substring(location.pathname.lastIndexOf("/") + 1)
+
+     const fetchUsers = () => {
+         fetch(`http://localhost:8080/user/${userId}`)
+             .then(res => res.json())
+             .then(users => setUsers(users))
+             .catch(e => setError(e))
+             .finally(() => setFetched(true))
+     };
+
+
+     useEffect(() => {
+         fetchUsers()
+         }, [location])
+
+     if(!fetched){
+             return <p>Loading...</p>
+         }
+     if (error){
+         return <div>Error: {error}</div>;
+     }else{
+         return (
         <Container>
             <div className="main">
                 <Card border="primary" className="infocard rounded-3 leftpanel " style={{ width: '80rem' }}>
@@ -98,7 +128,7 @@ const UserDetails = () =>  {
                         </Card.Body>
                 </Card>
         </Container>
-    )
-
+        )
+    }
 }
 export default UserDetails;
