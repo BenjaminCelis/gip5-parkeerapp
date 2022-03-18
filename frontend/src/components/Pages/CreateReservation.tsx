@@ -5,6 +5,7 @@ import {Card, Table, Container, Button, Form, Row, Col, Dropdown, ListGroup} fro
 const CreateReservation = (props:any) =>  {
     const location = useLocation();
     let navigate = useNavigate();
+    let userId = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
     const [parkingspots, setParkingspots] = useState([{
        id: props.parkingspot ? props.parkingspot.id : '',
        floor: props.parkingspot ? props.parkingspot.floor : '',
@@ -43,7 +44,7 @@ const CreateReservation = (props:any) =>  {
            .finally(() => setFetched(true))
     };
     const fetchCars = () => {
-        fetch("http://localhost:8080/car")
+        fetch(`http://localhost:8080/car${userId}`)
             .then(res => res.json())
             .then(cars => setCars(cars))
             .catch(e => setError(e))
@@ -51,6 +52,12 @@ const CreateReservation = (props:any) =>  {
     };
 
     useEffect(() => {
+        if (!isNaN(userId as any)){
+            userId = "/" + userId
+        }else{
+            userId = ''
+        }
+        console.log(userId)
         fetchParkingspots()
         fetchCars()
     }, [location])
@@ -83,13 +90,12 @@ const CreateReservation = (props:any) =>  {
                                 .then(async response => {
                                     const isJson = response.headers.get('content-type')?.includes('application/json');
                                     const data = isJson && await response.json();
-                                    navigate('../reservation');
+			                        navigate(`/user/details/${data.car.owner.id}`);
 
                                     if (!response.ok) {
                                         const error = (data && data.message) || response.status;
                                         return Promise.reject(error);
                                     }
-
                                 })
                                 .catch(error => {
                                     console.error('There was an error!', error);

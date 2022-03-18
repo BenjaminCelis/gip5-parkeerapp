@@ -113,6 +113,9 @@ const UserDetails = (props:any) =>  {
                 <Card border="primary" className=" rounded-3 yourregistrationscard  " style={{ width: '46rem' }}>
                     <Card.Body>
                         <Card.Title><h2>Your reservations:</h2></Card.Title>
+                        <Link to={`/reservation/create/${user.id}`}>
+                            <Button className="btn btn-warning">Make new Reservation</Button>
+                        </Link>
                         <Card.Text>
                             <br/>
                             <Table className=" rounded-3 ">
