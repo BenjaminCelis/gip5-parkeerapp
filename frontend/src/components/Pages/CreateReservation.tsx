@@ -67,7 +67,6 @@ const CreateReservation = (props:any) =>  {
         });
 
             if (allFieldsFilled) {
-
                     const reservation = {
                         carId,
                         endTime,
@@ -104,8 +103,8 @@ const CreateReservation = (props:any) =>  {
     const handleInputChange = (event:any) => {
         const { name, value } = event.target;
         setReservation((prevState) => ({
-        ...prevState,
-        [name]: value
+            ...prevState,
+            [name]: value
         }));
     };
 
