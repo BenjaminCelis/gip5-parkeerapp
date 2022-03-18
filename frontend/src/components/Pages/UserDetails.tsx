@@ -67,7 +67,7 @@ const UserDetails = (props:any) =>  {
          return (
         <Container>
             <div className="main">
-                <Card border="primary" className="infocard rounded-3 leftpanel " style={{ width: '80rem' }}>
+                <Card border="primary" className="infocard rounded-3 leftpanel " style={{ width: '79rem' }}>
                         <Card.Title>
                             <div className="card-header">
                                 <h2>{user.firstname} {user.lastname}</h2>
@@ -108,7 +108,7 @@ const UserDetails = (props:any) =>  {
                     </Card.Body>
                 </Card>
 
-                <Card border="primary" className="infocard rounded-3 yourregistrationscard  " style={{ width: '40rem' }}>
+                <Card border="primary" className=" rounded-3 yourregistrationscard  " style={{ width: '46rem' }}>
                     <Card.Body>
                         <Card.Title><h2>Your reservations:</h2></Card.Title>
                         <Card.Text>

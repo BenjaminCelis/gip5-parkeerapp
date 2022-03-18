@@ -48,7 +48,7 @@ const UserList = (props:any) =>  {
                             <td>{user.email}</td>
                             <td>
                                 <Link to={`/user/details/${user.id}`}>
-                                    <Button className="btn btn-primary">Details</Button>
+                                    <Button className="btn btn-warning">Details</Button>
                                 </Link>
                             </td>
                         </tr>
