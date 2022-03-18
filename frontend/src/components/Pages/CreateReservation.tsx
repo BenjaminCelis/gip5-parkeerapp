@@ -35,7 +35,6 @@ const CreateReservation = (props:any) =>  {
     const [errorMsg, setErrorMsg] = useState('');
     const {carId, startTime, endTime,parkingspotId} = reservation;
 
-
     const fetchParkingspots = () => {
        fetch("http://localhost:8080/parkingspot")
            .then(res => res.json())

@@ -23,6 +23,28 @@ const ReservationList = (props:any) =>  {
             .finally(() => setFetched(true))
     };
 
+
+            const removeReservation = (reservation:any) => {
+              if (window.confirm(`Are you sure you want to cancel the reservation?`)) {
+                  const requestOptions = {
+                      method: 'DELETE'
+                  };
+                  fetch(`http://localhost:8080/reservation/${reservation.id}`, requestOptions)
+                      .then(async response => {
+                          const isJson = response.headers.get('content-type')?.includes('application/json');
+                          const data = isJson && await response.json();
+                          if (!response.ok) {
+                              const error = (data && data.message) || response.status;
+                              return Promise.reject(error);
+                          }
+                      })
+                      .catch(error => {
+                          console.error('There was an error!', error);
+                      })
+                      .finally(() => fetchReservations())
+              }
+            }
+
     useEffect(() => {
         fetchReservations()
     }, [location])
@@ -41,7 +63,7 @@ const ReservationList = (props:any) =>  {
                             <th scope="col"><h4>Name</h4></th>
                             <th scope="col"><h4>E-mail</h4></th>
                             <th scope="col"><h4>Car</h4></th>
-                            <th scope="col"><h4>Number plate</h4></th>
+                            <th scope="col"><h4>License plate</h4></th>
                             <th scope="col"><h4>Parking spot</h4></th>
                             <th scope="col"><h4>From</h4></th>
                             <th scope="col"><h4>Until</h4></th>
@@ -58,6 +80,7 @@ const ReservationList = (props:any) =>  {
                             <td>{reservation.parkingspot.spotCode}</td>
                             <td>{reservation.startTime}</td>
                             <td>{reservation.endTime}</td>
+                            <td><Button onClick={() => removeReservation(reservation)} className="btn btn-danger">Remove</Button></td>
                         </tr>
                     ))}
                     </tbody>

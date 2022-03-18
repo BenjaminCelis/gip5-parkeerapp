@@ -51,6 +51,47 @@ const UserDetails = (props:any) =>  {
              .finally(() => setFetched(true))
      };
 
+         const removeCar = (car:any) => {
+             if (window.confirm(`Are you sure you want to remove: ${car.color}, ${car.brand}(${car.licensePlate})?`)) {
+                 const requestOptions = {
+                     method: 'DELETE'
+                 };
+                 fetch(`http://localhost:8080/car/${car.id}`, requestOptions)
+                     .then(async response => {
+                         const isJson = response.headers.get('content-type')?.includes('application/json');
+                         const data = isJson && await response.json();
+                         if (!response.ok) {
+                             const error = (data && data.message) || response.status;
+                             return Promise.reject(error);
+                         }
+                     })
+                     .catch(error => {
+                         console.error('There was an error!', error);
+                     })
+                     .finally(() => fetchCars())
+             }
+         }
+            const removeReservation = (reservation:any) => {
+              if (window.confirm(`Are you sure you want to cancel the reservation?`)) {
+                  const requestOptions = {
+                      method: 'DELETE'
+                  };
+                  fetch(`http://localhost:8080/reservation/${reservation.id}`, requestOptions)
+                      .then(async response => {
+                          const isJson = response.headers.get('content-type')?.includes('application/json');
+                          const data = isJson && await response.json();
+                          if (!response.ok) {
+                              const error = (data && data.message) || response.status;
+                              return Promise.reject(error);
+                          }
+                      })
+                      .catch(error => {
+                          console.error('There was an error!', error);
+                      })
+                      .finally(() => fetchReservations())
+              }
+            }
+
 
      useEffect(() => {
          fetchUser()
@@ -101,6 +142,7 @@ const UserDetails = (props:any) =>  {
                                                 <td>{car.brand}</td>
                                                 <td>{car.color}</td>
                                                 <td>{car.licensePlate}</td>
+                                                <td><Button onClick={() => removeCar(car)} className="btn btn-danger">Remove</Button></td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -137,6 +179,7 @@ const UserDetails = (props:any) =>  {
                                             <td>{reservation.parkingspot.spotCode}</td>
                                             <td>{reservation.startTime}</td>
                                             <td>{reservation.endTime}</td>
+                                            <td><Button onClick={() => removeReservation(reservation)} className="btn btn-danger">Remove</Button></td>
                                         </tr>
                                     ))}
                                 </tbody>

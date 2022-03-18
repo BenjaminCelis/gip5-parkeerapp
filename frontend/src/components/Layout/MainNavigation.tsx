@@ -24,9 +24,6 @@ function MainNavigation() {
                     <li>
                         <Link to="/user"><h3>Users</h3></Link>
                     </li>
-                    <li>
-                        <Link to="/reservation/create"><h3>New reservation</h3></Link>
-                    </li>
                 </ul>
             </nav>
         </header>
