@@ -1,9 +1,10 @@
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {Card, Table, Container, Button, Form, Row, Col, Dropdown, ListGroup} from "react-bootstrap";
 
 const CreateReservation = (props:any) =>  {
     const location = useLocation();
+    let navigate = useNavigate();
     const [parkingspots, setParkingspots] = useState([{
        id: props.parkingspot ? props.parkingspot.id : '',
        floor: props.parkingspot ? props.parkingspot.floor : '',
@@ -83,11 +84,13 @@ const CreateReservation = (props:any) =>  {
                                 .then(async response => {
                                     const isJson = response.headers.get('content-type')?.includes('application/json');
                                     const data = isJson && await response.json();
+                                    navigate('../reservation');
 
                                     if (!response.ok) {
                                         const error = (data && data.message) || response.status;
                                         return Promise.reject(error);
                                     }
+
                                 })
                                 .catch(error => {
                                     console.error('There was an error!', error);
