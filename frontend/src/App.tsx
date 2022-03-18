@@ -5,6 +5,7 @@ import MainNavigation from "./components/Layout/MainNavigation";
 import MainFooter from "./components/Layout/MainFooter";
 import LoginPage from "./components/Pages/LoginPage";
 import CreateReservation from "./components/Pages/CreateReservation";
+import CreateCar from "./components/Pages/CreateCar";
 import ReservationList from "./components/Pages/ReservationList";
 import UserDetails from "./components/Pages/UserDetails";
 import UserList from "./components/Pages/UserList";
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/reservation/*" element={<ReservationList />} />
                     <Route path="/user/" element={<UserList />} />
                     <Route path="/user/details/*" element={<UserDetails />} />
+                    <Route path="/car/create/*" element={<CreateCar />} />
                     <Route path="/redirect" element={<Navigate to="/reservation" />} />
                 </Routes>
             </body>

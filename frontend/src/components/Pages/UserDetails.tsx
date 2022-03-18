@@ -77,10 +77,12 @@ const UserDetails = (props:any) =>  {
                 </Card>
             </div>
 
-
                 <Card border="primary" className=" rounded-3 card-your-cars car " style={{ width: '30rem' }}>
                     <Card.Body>
                         <Card.Title><h2>Your registered cars:</h2></Card.Title>
+                        <Link to={`/car/create/${user.id}`}>
+                            <Button className="btn btn-warning">Add new Car</Button>
+                        </Link>
                         <Card.Text>
                             <br/>
                             <div className="list-group">
