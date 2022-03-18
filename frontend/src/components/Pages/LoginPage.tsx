@@ -93,15 +93,25 @@ const LoginPage = (props:any) =>  {
 							<Card.Text>
 								<Form>
 								<br/>
-								<Form.Group controlId="formBasicEmail">
-									<Form.Label><h5>Email:</h5></Form.Label>
-									<Form.Control type="email" placeholder="Enter email" />
-								</Form.Group>
-								<br/>
-								<Form.Group controlId="formBasicPassword">
-									<Form.Label><h5>Password:</h5></Form.Label>
-									<Form.Control type="password" placeholder="Enter password" />
-								</Form.Group>
+                            <Form.Group>
+								<Form.Label><h5>Email:</h5></Form.Label>
+                                <Form.Control
+                                    className="input-control"
+                                    type="email"
+                                    placeholder="Enter your e-mail"
+                                    onChange={handleInputChange}
+                                />
+							</Form.Group>
+							<br/>
+							<Form.Group>
+								<Form.Label><h5>Password:</h5></Form.Label>
+                                <Form.Control
+                                    className="input-control"
+                                    type="password"
+                                    placeholder="Enter your password"
+                                    onChange={handleInputChange}
+                                />
+							</Form.Group>
 								<br/>
 								<Button variant="success btn-warning" type="submit">
 									Login
