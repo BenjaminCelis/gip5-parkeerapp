@@ -2,6 +2,7 @@ package com.example.parkeerapp.web;
 
 
 import com.example.parkeerapp.DTO.CreateMemberDTO;
+import com.example.parkeerapp.DTO.CreateUserDTO;
 import com.example.parkeerapp.DTO.MemberDTO;
 import com.example.parkeerapp.Services.MemberService;
 import org.springframework.http.HttpStatus;
@@ -22,8 +23,9 @@ public class MemberResource {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public MemberDTO createMember(@RequestBody CreateMemberDTO createMemberDTO){
-        return memberService.createMember(createMemberDTO);
+    public MemberDTO createMember(@RequestBody CreateUserDTO createUserDTO){
+
+        return memberService.createMember(createUserDTO);
     }
 
     @GetMapping
