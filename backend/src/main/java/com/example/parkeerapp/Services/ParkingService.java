@@ -85,6 +85,11 @@ public class ParkingService {
     public List<Car> getCars(){
         return carRepository.findAll();
     }
+    public void deleteCar(Long carId) {
+        if(!carExists(carId))throw new IllegalArgumentException();
+        Car car = carRepository.findById(carId).get();
+        carRepository.delete(car);
+    }
 
     //PARKINGSPOTS
 

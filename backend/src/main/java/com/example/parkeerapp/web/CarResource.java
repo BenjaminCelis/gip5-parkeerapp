@@ -43,4 +43,13 @@ public class CarResource {
     public ResponseEntity<Car> makeCar(@RequestBody CarDTO carDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.makeCar(carDTO));
     }
+
+    @DeleteMapping("/{carId}")
+    public ResponseEntity deleteCar(@PathVariable("carId") Long carId){
+        if(carId<1) return ResponseEntity.badRequest().build();
+        if(!service.carExists(carId)) return ResponseEntity.notFound().build();
+
+        service.deleteCar(carId);
+        return ResponseEntity.ok().build();
+    }
 }
