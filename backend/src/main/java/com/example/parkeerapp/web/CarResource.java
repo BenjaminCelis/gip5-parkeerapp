@@ -1,5 +1,6 @@
 package com.example.parkeerapp.web;
 
+import com.example.parkeerapp.DTO.CarDTO;
 import com.example.parkeerapp.Domain.Car;
 import com.example.parkeerapp.Services.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,15 @@ public class CarResource {
         return ResponseEntity.ok(service.getUserCars(userId));
 
     }
+
+
     @GetMapping
     public ResponseEntity<List<Car>> getCars(){
         return ResponseEntity.ok(service.getCars());
+    }
+
+    @PostMapping
+    public ResponseEntity<Car> makeCar(@RequestBody CarDTO carDTO){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.makeCar(carDTO));
     }
 }

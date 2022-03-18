@@ -1,5 +1,6 @@
 package com.example.parkeerapp.Services;
 
+import com.example.parkeerapp.DTO.CarDTO;
 import com.example.parkeerapp.DTO.ReservationDTO;
 import com.example.parkeerapp.DTO.UserDTO;
 import com.example.parkeerapp.Domain.*;
@@ -69,7 +70,13 @@ public class ParkingService {
         return carRepository.findById(carId).orElseThrow();
     }
 
-    public Car makeCar(Car car){
+    public Car makeCar(CarDTO carDTO){
+        if(!userExists(carDTO.getOwnerId())){
+            throw new NotFoundException("Owner not found");
+        }
+        User user = getUser(carDTO.getOwnerId());
+        Car car = new Car(user,carDTO.getLicensePlate(),carDTO.getColor(), carDTO.getBrand());
+
         return carRepository.save(car);
     }
     public boolean carExists(Long carId){

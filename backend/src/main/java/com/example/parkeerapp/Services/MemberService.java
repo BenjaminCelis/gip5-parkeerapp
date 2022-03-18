@@ -35,13 +35,7 @@ public class MemberService {
         Member member = new Member();
         member.setUser(new User(createUserDTO.getFirstName(),createUserDTO.getLastName(),createUserDTO.getPassword(),"Member",createUserDTO.getEmail()));
         member.getUser().setUsername(createUserDTO.getEmail());
-
-
-
-
         member.getUser().setPassword(passwordEncoder.encode(member.getUser().getPassword()));
-
-
         memberRepository.save(member);
         return memberConverter.memberToDTO(member);
     }
@@ -49,4 +43,6 @@ public class MemberService {
     public List<MemberDTO> getAllMembers(){return memberConverter.MemberListToDTO(memberRepository.findAll());}
 
 }
+
+
 
