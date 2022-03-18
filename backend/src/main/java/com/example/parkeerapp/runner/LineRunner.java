@@ -40,7 +40,7 @@ public class LineRunner implements CommandLineRunner {
         userRepository.save(igor);
 
         Car lambo = new Car(igor, "1-NWG-502","YELLOW", "Lamborgini");
-        Car fera = new Car(igor, "BALLER","RED", "Ferrari");
+        Car fera = new Car(igor, "1-BAl-730","RED", "Ferrari");
         Car porsche = new Car(igor, "1-PLA-508","GREY", "Porsche");
         carRepository.save(lambo);
         carRepository.save(fera);
