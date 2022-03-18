@@ -41,7 +41,7 @@ public class ReservationResource {
         Reservation reservation =  service.getReservation(reservationId);
         return ResponseEntity.ok(reservation);
     }
-    @GetMapping("/user/{memberId}")
+    @GetMapping("/user/{userId}")
 
     public ResponseEntity<List<Reservation>> getUserReservations(@PathVariable("userId") Long userId){
         if(service.userExists(userId)){
